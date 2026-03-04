@@ -1,0 +1,280 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { HiUpload, HiX, HiCheckCircle } from "react-icons/hi";
+
+export default function QuoteForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
+  const [contactMethod, setContactMethod] = useState("call");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newFiles = Array.from(e.target.files || []);
+    setFiles((prev) => [...prev, ...newFiles].slice(0, 3));
+  };
+
+  const removeFile = (index: number) => {
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Connect to Formspree, API route, or server action
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 text-center">
+        <HiCheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+        <h3 className="text-2xl font-bold text-navy mb-3">
+          Quote Request Received!
+        </h3>
+        <p className="text-text-muted mb-6">
+          Thanks for reaching out. We&apos;ll review your information and get
+          back to you within a few hours. If you need immediate help, give us a
+          call.
+        </p>
+        <button
+          onClick={() => {
+            setSubmitted(false);
+            setFiles([]);
+          }}
+          className="text-steel font-semibold hover:text-navy transition-colors"
+        >
+          Submit Another Request
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white rounded-2xl shadow-lg p-8 md:p-10"
+    >
+      <h2 className="text-2xl font-bold text-navy mb-2">
+        Get a Free Quote
+      </h2>
+      <p className="text-text-muted mb-8">
+        Fill out the form below and we&apos;ll get back to you with an
+        estimate — usually within a few hours.
+      </p>
+
+      <div className="space-y-5">
+        {/* Name & Phone */}
+        <div className="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-text-dark mb-1.5"
+            >
+              Full Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
+              placeholder="John Smith"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-text-dark mb-1.5"
+            >
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
+              placeholder="(817) 555-1234"
+            />
+          </div>
+        </div>
+
+        {/* Email */}
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-text-dark mb-1.5"
+          >
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
+            placeholder="john@example.com"
+          />
+        </div>
+
+        {/* Vehicle Info */}
+        <div className="grid sm:grid-cols-3 gap-5">
+          <div>
+            <label
+              htmlFor="year"
+              className="block text-sm font-medium text-text-dark mb-1.5"
+            >
+              Vehicle Year
+            </label>
+            <input
+              type="text"
+              id="year"
+              name="year"
+              className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
+              placeholder="2023"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="make"
+              className="block text-sm font-medium text-text-dark mb-1.5"
+            >
+              Make
+            </label>
+            <input
+              type="text"
+              id="make"
+              name="make"
+              className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
+              placeholder="Toyota"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="model"
+              className="block text-sm font-medium text-text-dark mb-1.5"
+            >
+              Model
+            </label>
+            <input
+              type="text"
+              id="model"
+              name="model"
+              className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
+              placeholder="Camry"
+            />
+          </div>
+        </div>
+
+        {/* Damage Description */}
+        <div>
+          <label
+            htmlFor="damage"
+            className="block text-sm font-medium text-text-dark mb-1.5"
+          >
+            Describe the Damage *
+          </label>
+          <textarea
+            id="damage"
+            name="damage"
+            required
+            rows={4}
+            className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark resize-none"
+            placeholder="Tell us about the dents, dings, or hail damage. Include location on the vehicle and approximate size if possible."
+          />
+        </div>
+
+        {/* Photo Upload */}
+        <div>
+          <label className="block text-sm font-medium text-text-dark mb-1.5">
+            Upload Photos (up to 3)
+          </label>
+          <div
+            onClick={() => fileInputRef.current?.click()}
+            className="border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-steel/50 hover:bg-bg-light/50 transition-all"
+          >
+            <HiUpload className="w-8 h-8 text-text-muted mx-auto mb-2" />
+            <p className="text-sm text-text-muted">
+              Click to upload or drag and drop
+            </p>
+            <p className="text-xs text-text-muted mt-1">
+              JPG, PNG up to 10MB each
+            </p>
+          </div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileChange}
+            className="hidden"
+          />
+
+          {/* File previews */}
+          {files.length > 0 && (
+            <div className="flex gap-3 mt-3">
+              {files.map((file, i) => (
+                <div
+                  key={i}
+                  className="relative group bg-bg-light rounded-lg p-2"
+                >
+                  <span className="text-xs text-text-muted truncate block max-w-[100px]">
+                    {file.name}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => removeFile(i)}
+                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <HiX className="w-3 h-3" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Preferred Contact Method */}
+        <div>
+          <label className="block text-sm font-medium text-text-dark mb-3">
+            Preferred Contact Method
+          </label>
+          <div className="flex gap-4">
+            {[
+              { value: "call", label: "Phone Call" },
+              { value: "text", label: "Text Message" },
+              { value: "email", label: "Email" },
+            ].map((option) => (
+              <label
+                key={option.value}
+                className="flex items-center gap-2 cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  name="contactMethod"
+                  value={option.value}
+                  checked={contactMethod === option.value}
+                  onChange={(e) => setContactMethod(e.target.value)}
+                  className="w-4 h-4 text-steel accent-steel"
+                />
+                <span className="text-sm text-text-dark">{option.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full bg-accent hover:bg-accent-hover text-white font-bold py-4 rounded-lg text-lg transition-all hover:shadow-lg hover:shadow-accent/25"
+        >
+          Submit Quote Request
+        </button>
+
+        <p className="text-xs text-text-muted text-center">
+          We typically respond within 2-4 hours during business hours. Your
+          information is never shared with third parties.
+        </p>
+      </div>
+    </form>
+  );
+}
