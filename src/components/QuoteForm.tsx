@@ -3,11 +3,26 @@
 import { useState, useRef } from "react";
 import { HiUpload, HiX, HiCheckCircle } from "react-icons/hi";
 
+const WEBHOOK_URL =
+  "https://n8n.srv1364361.hstgr.cloud/webhook/boone-pdr-quote";
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [contactMethod, setContactMethod] = useState("call");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = Array.from(e.target.files || []);
@@ -18,10 +33,58 @@ export default function QuoteForm() {
     setFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Connect to Formspree, API route, or server action
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const form = formRef.current!;
+      const formData = new FormData(form);
+
+      // Convert photos to base64
+      const photos = await Promise.all(
+        files.map(async (file) => ({
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          data: await fileToBase64(file),
+        }))
+      );
+
+      const payload = {
+        name: formData.get("name") as string,
+        phone: formData.get("phone") as string,
+        email: (formData.get("email") as string) || "Not provided",
+        vehicle: [
+          formData.get("year"),
+          formData.get("make"),
+          formData.get("model"),
+        ]
+          .filter(Boolean)
+          .join(" ") || "Not provided",
+        damage: formData.get("damage") as string,
+        contactMethod,
+        photoCount: files.length,
+        photos,
+      };
+
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Something went wrong submitting your request. Please call us directly or try again."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -51,6 +114,7 @@ export default function QuoteForm() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className="bg-white rounded-2xl shadow-lg p-8 md:p-10"
     >
@@ -262,12 +326,20 @@ export default function QuoteForm() {
           </div>
         </div>
 
+        {/* Error message */}
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm">
+            {error}
+          </div>
+        )}
+
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-accent hover:bg-accent-hover text-white font-bold py-4 rounded-lg text-lg transition-all hover:shadow-lg hover:shadow-accent/25"
+          disabled={submitting}
+          className="w-full bg-accent hover:bg-accent-hover disabled:bg-accent/60 text-white font-bold py-4 rounded-lg text-lg transition-all hover:shadow-lg hover:shadow-accent/25 disabled:cursor-not-allowed"
         >
-          Submit Quote Request
+          {submitting ? "Submitting..." : "Submit Quote Request"}
         </button>
 
         <p className="text-xs text-text-muted text-center">
