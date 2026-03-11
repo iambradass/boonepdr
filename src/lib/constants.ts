@@ -1,10 +1,12 @@
-// Business information — update these when Boone provides real details
 export const BUSINESS = {
-  name: "Boone Sanders PDR",
+  name: "Boone PDR",
+  nameFull: "Boone Paintless Dent Repair",
   tagline: "DFW's Trusted Paintless Dent Repair Experts",
-  phone: "(817) 555-0199",
-  phoneRaw: "+18175550199",
-  email: "info@boonesanderspdr.com",
+  phone: "(817) 228-0050",
+  phoneRaw: "+18172280050",
+  email: "boone@boonepdr.com",
+  domain: "boonepdr.com",
+  url: "https://boonepdr.com",
   address: "Fort Worth, TX",
   serviceArea: "Dallas-Fort Worth Metroplex",
   hours: {
@@ -13,7 +15,8 @@ export const BUSINESS = {
     sunday: "Sun: Closed",
   },
   social: {
-    facebook: "https://facebook.com/boone.sanders",
+    facebook: "https://facebook.com/boonepdr",
+    instagram: "https://instagram.com/boonepdr",
     google: "#",
     yelp: "#",
   },

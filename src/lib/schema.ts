@@ -5,11 +5,11 @@ export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://boonesanderspdr.com",
+    "@id": "https://boonepdr.com",
     name: BUSINESS.name,
     description:
       "Professional paintless dent repair serving the Dallas-Fort Worth metroplex. Hail damage repair, door ding removal, and lease return dent repair. Insurance claims assistance available.",
-    url: "https://boonesanderspdr.com",
+    url: "https://boonepdr.com",
     telephone: BUSINESS.phone,
     email: BUSINESS.email,
     address: {

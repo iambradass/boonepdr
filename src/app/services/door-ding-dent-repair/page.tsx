@@ -44,7 +44,7 @@ export default function DoorDingDentRepairPage() {
     name: "Door Ding & Dent Repair",
     description:
       "Professional paintless door ding and dent repair in Fort Worth and Dallas. Starting at $75. Same-day service available.",
-    url: "https://boonesanderspdr.com/services/door-ding-dent-repair",
+    url: "https://boonepdr.com/services/door-ding-dent-repair",
   });
   const faqSchema = getFAQSchema(faqs);
 
@@ -167,7 +167,7 @@ export default function DoorDingDentRepairPage() {
             <div>
               <BeforeAfterSlider
                 beforeColor="#90A4AE"
-                afterColor="#2E75B6"
+                afterColor="#C41E3A"
                 height="280px"
                 beforeLabel="Before"
                 afterLabel="After"
@@ -179,7 +179,7 @@ export default function DoorDingDentRepairPage() {
             <div>
               <BeforeAfterSlider
                 beforeColor="#78909C"
-                afterColor="#1B3A5C"
+                afterColor="#1A1A1A"
                 height="280px"
                 beforeLabel="Before"
                 afterLabel="After"

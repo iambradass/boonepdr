@@ -141,6 +141,7 @@ export default function QuoteForm() {
               id="name"
               name="name"
               required
+              autoComplete="name"
               className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
               placeholder="John Smith"
             />
@@ -157,6 +158,7 @@ export default function QuoteForm() {
               id="phone"
               name="phone"
               required
+              autoComplete="tel"
               className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
               placeholder="(817) 555-1234"
             />
@@ -175,6 +177,7 @@ export default function QuoteForm() {
             type="email"
             id="email"
             name="email"
+            autoComplete="email"
             className="w-full px-4 py-3 rounded-lg border border-border focus:border-steel focus:ring-2 focus:ring-steel/20 outline-none transition-all text-text-dark"
             placeholder="john@example.com"
           />
@@ -252,9 +255,23 @@ export default function QuoteForm() {
           <label className="block text-sm font-medium text-text-dark mb-1.5">
             Upload Photos (up to 3)
           </label>
-          <div
+
+          {/* Photo instructions */}
+          <div className="bg-bg-light border border-border rounded-lg p-4 mb-3 text-sm text-text-muted space-y-1">
+            <p className="font-medium text-text-dark mb-2">For the best estimate, follow these tips:</p>
+            <ul className="space-y-1 list-disc list-inside">
+              <li>Shoot in natural light or a well-lit area — avoid flash</li>
+              <li>Get close enough that the damage fills most of the frame</li>
+              <li>Take one straight-on shot and one at a slight angle</li>
+              <li>Place a coin or pen next to the damage so we can gauge size</li>
+            </ul>
+          </div>
+
+          <button
+            type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-steel/50 hover:bg-bg-light/50 transition-all"
+            className="w-full border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-steel/50 hover:bg-bg-light/50 focus:border-steel focus:outline-none focus:ring-2 focus:ring-steel/20 transition-all"
+            aria-label="Upload photos of your damage"
           >
             <HiUpload className="w-8 h-8 text-text-muted mx-auto mb-2" />
             <p className="text-sm text-text-muted">
@@ -263,7 +280,7 @@ export default function QuoteForm() {
             <p className="text-xs text-text-muted mt-1">
               JPG, PNG up to 10MB each
             </p>
-          </div>
+          </button>
           <input
             ref={fileInputRef}
             type="file"
@@ -287,7 +304,8 @@ export default function QuoteForm() {
                   <button
                     type="button"
                     onClick={() => removeFile(i)}
-                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label={`Remove ${file.name}`}
+                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity"
                   >
                     <HiX className="w-3 h-3" />
                   </button>
@@ -339,8 +357,13 @@ export default function QuoteForm() {
           disabled={submitting}
           className="w-full bg-accent hover:bg-accent-hover disabled:bg-accent/60 text-white font-bold py-4 rounded-lg text-lg transition-all hover:shadow-lg hover:shadow-accent/25 disabled:cursor-not-allowed"
         >
-          {submitting ? "Submitting..." : "Submit Quote Request"}
+          {submitting ? "Sending Your Request..." : "Get My Free Estimate"}
         </button>
+
+        {/* Preliminary estimate disclaimer */}
+        <p className="text-xs text-text-muted text-center bg-bg-light border border-border rounded-lg px-4 py-3">
+          <strong>Disclaimer:</strong> Any estimate provided based on submitted photos is preliminary only. Final pricing will be confirmed after an in-person inspection of the vehicle.
+        </p>
 
         <p className="text-xs text-text-muted text-center">
           We typically respond within 2-4 hours during business hours. Your

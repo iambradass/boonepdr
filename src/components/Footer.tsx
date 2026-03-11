@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HiPhone, HiMail, HiLocationMarker, HiClock } from "react-icons/hi";
 import { BUSINESS, SERVICE_CITIES, NAV_LINKS } from "@/lib/constants";
+import Logo from "@/components/Logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,18 +13,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">BS</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-lg leading-tight">
-                  Boone Sanders
-                </span>
-                <span className="text-white/60 text-xs leading-tight tracking-wide uppercase">
-                  Paintless Dent Repair
-                </span>
-              </div>
+            <div className="mb-4">
+              <Logo size={140} className="brightness-0 invert" />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Professional paintless dent repair serving the entire Dallas-Fort
@@ -90,7 +81,7 @@ export default function Footer() {
                 <span>
                   {BUSINESS.address}
                   <br />
-                  <span className="text-white/50">Mobile Service — We Come to You</span>
+                  <span className="text-white/65">Mobile Service — We Come to You</span>
                 </span>
               </li>
               <li className="flex items-start gap-3 text-white/70 text-sm">
@@ -135,14 +126,14 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/50 text-sm">
+          <p className="text-white/65 text-sm">
             &copy; {currentYear} {BUSINESS.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm text-white/50">
-            <Link href="/contact" className="hover:text-accent transition-colors">
+          <div className="flex items-center gap-6 text-sm text-white/65">
+            <Link href="/privacy" className="hover:text-accent transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/contact" className="hover:text-accent transition-colors">
+            <Link href="/terms" className="hover:text-accent transition-colors">
               Terms of Service
             </Link>
           </div>

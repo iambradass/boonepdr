@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { HiChevronLeft, HiChevronRight, HiStar } from "react-icons/hi";
 
 interface Testimonial {
@@ -52,16 +52,42 @@ const testimonials: Testimonial[] = [
 export default function TestimonialCarousel() {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  // Intersection observer for scroll-reveal
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const transition = useCallback((newIndex: number) => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActive(newIndex);
+      setIsAnimating(false);
+    }, 200);
+  }, []);
 
   const next = useCallback(() => {
-    setActive((prev) => (prev + 1) % testimonials.length);
-  }, []);
+    transition((active + 1) % testimonials.length);
+  }, [active, transition]);
 
   const prev = useCallback(() => {
-    setActive(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
-  }, []);
+    transition((active - 1 + testimonials.length) % testimonials.length);
+  }, [active, transition]);
 
   // Auto-rotate
   useEffect(() => {
@@ -73,10 +99,19 @@ export default function TestimonialCarousel() {
   const t = testimonials[active];
 
   return (
-    <section className="py-20 bg-bg-light">
+    <section ref={sectionRef} className="py-24 bg-bg-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+        <div
+          className="text-center mb-14 transition-all duration-700 ease-out"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(30px)",
+          }}
+        >
+          <span className="inline-block text-steel font-semibold text-sm tracking-wider uppercase mb-3">
+            Testimonials
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-navy mb-4">
             What Our Customers Say
           </h2>
           <p className="text-text-muted text-lg max-w-2xl mx-auto">
@@ -86,17 +121,31 @@ export default function TestimonialCarousel() {
         </div>
 
         <div
-          className="max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto transition-all duration-700 ease-out"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(30px)",
+            transitionDelay: "150ms",
+          }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 relative">
+          <div className="bg-white rounded-3xl shadow-[0_4px_40px_rgba(0,0,0,0.06)] p-8 md:p-12 relative overflow-hidden">
+            {/* Decorative accent line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-steel via-accent to-steel" />
+
             {/* Quote mark */}
-            <div className="absolute top-6 left-8 text-steel/10 text-8xl font-serif leading-none select-none">
+            <div className="absolute top-8 left-8 text-steel/8 text-9xl font-serif leading-none select-none">
               &ldquo;
             </div>
 
-            <div className="relative">
+            <div
+              className="relative transition-all duration-300 ease-out"
+              style={{
+                opacity: isAnimating ? 0 : 1,
+                transform: isAnimating ? "translateY(10px)" : "translateY(0)",
+              }}
+            >
               {/* Stars */}
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(t.rating)].map((_, i) => (
@@ -105,24 +154,24 @@ export default function TestimonialCarousel() {
               </div>
 
               {/* Service badge */}
-              <span className="inline-block bg-steel/10 text-steel text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              <span className="inline-block bg-steel/10 text-steel text-xs font-bold px-3 py-1.5 rounded-full mb-5 tracking-wide uppercase">
                 {t.service}
               </span>
 
               {/* Quote */}
-              <blockquote className="text-text-dark text-lg leading-relaxed mb-6">
+              <blockquote className="text-text-dark text-lg md:text-xl leading-relaxed mb-8 font-medium">
                 &ldquo;{t.text}&rdquo;
               </blockquote>
 
               {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-navy/10 to-steel/10 rounded-full flex items-center justify-center">
                   <span className="text-navy font-bold text-lg">
                     {t.name[0]}
                   </span>
                 </div>
                 <div>
-                  <div className="font-semibold text-navy">{t.name}</div>
+                  <div className="font-bold text-navy">{t.name}</div>
                   <div className="text-text-muted text-sm">{t.vehicle}</div>
                 </div>
               </div>
@@ -130,37 +179,38 @@ export default function TestimonialCarousel() {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-center gap-4 mt-6">
+          <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center hover:bg-bg-light transition-colors"
+              className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center hover:bg-navy hover:text-white hover:border-navy transition-all duration-300"
               aria-label="Previous testimonial"
             >
-              <HiChevronLeft className="w-5 h-5 text-navy" />
+              <HiChevronLeft className="w-5 h-5" />
             </button>
 
             {/* Dots */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setActive(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  onClick={() => transition(i)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
                     i === active
-                      ? "bg-steel w-6"
-                      : "bg-border hover:bg-text-muted"
+                      ? "bg-steel w-8"
+                      : "bg-border hover:bg-text-muted w-2.5"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
+                  aria-current={i === active ? "true" : undefined}
                 />
               ))}
             </div>
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center hover:bg-bg-light transition-colors"
+              className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center hover:bg-navy hover:text-white hover:border-navy transition-all duration-300"
               aria-label="Next testimonial"
             >
-              <HiChevronRight className="w-5 h-5 text-navy" />
+              <HiChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>

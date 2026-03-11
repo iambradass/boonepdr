@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Paintless Dent Repair Fort Worth & Dallas | Boone Sanders PDR",
-    template: "%s | Boone Sanders PDR",
+    default: "Paintless Dent Repair Fort Worth & Dallas | Boone PDR",
+    template: "%s | Boone PDR",
   },
   description:
     "Professional paintless dent repair in the DFW metroplex. Hail damage repair, door ding removal, and insurance claims assistance. Free estimates. Lifetime warranty on all repairs.",
@@ -30,21 +30,36 @@ export const metadata: Metadata = {
     "door ding repair",
     "auto dent repair",
   ],
-  authors: [{ name: "Boone Sanders PDR" }],
+  authors: [{ name: "Boone PDR" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://boonesanderspdr.com",
-    siteName: "Boone Sanders PDR",
-    title: "Paintless Dent Repair Fort Worth & Dallas | Boone Sanders PDR",
+    url: "https://boonepdr.com",
+    siteName: "Boone PDR",
+    title: "Paintless Dent Repair Fort Worth & Dallas | Boone PDR",
     description:
       "Professional paintless dent repair in the DFW metroplex. Hail damage, door dings, and dent removal. Free estimates & lifetime warranty.",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Boone PDR — Professional Paintless Dent Repair",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Paintless Dent Repair Fort Worth & Dallas | Boone PDR",
+    description:
+      "Professional paintless dent repair in the DFW metroplex. Free estimates & lifetime warranty.",
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://boonesanderspdr.com"),
+  metadataBase: new URL("https://boonepdr.com"),
 };
 
 export default function RootLayout({
@@ -66,7 +81,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased font-sans`}>
         <Header />
-        <main className="pt-16 md:pt-[calc(4rem+2.25rem)]">{children}</main>
+        <main className="pt-16">{children}</main>
         <Footer />
         <FloatingCTA />
       </body>

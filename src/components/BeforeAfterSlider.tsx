@@ -5,6 +5,8 @@ import { useState, useRef, useCallback } from "react";
 interface BeforeAfterSliderProps {
   beforeColor?: string;
   afterColor?: string;
+  beforeImage?: string;
+  afterImage?: string;
   beforeLabel?: string;
   afterLabel?: string;
   height?: string;
@@ -12,7 +14,9 @@ interface BeforeAfterSliderProps {
 
 export default function BeforeAfterSlider({
   beforeColor = "#94a3b8",
-  afterColor = "#1B3A5C",
+  afterColor = "#1A1A1A",
+  beforeImage,
+  afterImage,
   beforeLabel = "Before",
   afterLabel = "After",
   height = "300px",
@@ -72,36 +76,42 @@ export default function BeforeAfterSlider({
       {/* After (full background) */}
       <div
         className="absolute inset-0 flex items-center justify-center"
-        style={{ backgroundColor: afterColor }}
+        style={afterImage ? undefined : { backgroundColor: afterColor }}
       >
-        {/* Placeholder pattern for after */}
-        <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
-            <svg className="w-10 h-10 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        {afterImage ? (
+          <img src={afterImage} alt={afterLabel} className="w-full h-full object-cover" />
+        ) : (
+          <div className="text-center">
+            <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
+              <svg className="w-10 h-10 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span className="text-white/60 font-medium text-sm">After PDR Repair</span>
           </div>
-          <span className="text-white/60 font-medium text-sm">After PDR Repair</span>
-        </div>
+        )}
       </div>
 
       {/* Before (clipped) */}
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={{
-          backgroundColor: beforeColor,
+          ...(beforeImage ? undefined : { backgroundColor: beforeColor }),
           clipPath: `inset(0 ${100 - position}% 0 0)`,
         }}
       >
-        {/* Placeholder pattern for before */}
-        <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
-            <svg className="w-10 h-10 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-            </svg>
+        {beforeImage ? (
+          <img src={beforeImage} alt={beforeLabel} className="w-full h-full object-cover" />
+        ) : (
+          <div className="text-center">
+            <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
+              <svg className="w-10 h-10 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+            <span className="text-white/60 font-medium text-sm">Before — Dent Damage</span>
           </div>
-          <span className="text-white/60 font-medium text-sm">Before — Dent Damage</span>
-        </div>
+        )}
       </div>
 
       {/* Labels */}

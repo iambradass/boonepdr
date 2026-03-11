@@ -1,0 +1,23 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rounded square -->
+  <rect width="120" height="120" rx="24" fill="#1A1A1A"/>
+
+  <!-- Subtle inner depth -->
+  <rect x="4" y="4" width="112" height="112" rx="20" fill="url(#innerGlow)"/>
+
+  <!-- Bold B letterform -->
+  <path d="M38 28h24c8 0 14.5 2.5 18.5 6.5S85 43 85 50c0 5-1.5 9-4 12.5-1.5 2-3.5 3.5-6 4.5 3.5 1 6.5 3 8.5 5.5 3 3.5 4.5 8 4.5 13.5 0 8-2.5 14-7.5 18S69 110 60 110H38V28z M52 40v22h10c5 0 8.5-1.5 11-4s3.5-6 3.5-10c0-3-1-5.5-3-7.5S67.5 40 64 40H52z M52 74v24h11c5.5 0 9.5-1.5 12.5-4.5S79 87.5 79 83c0-3.5-1.5-6.5-4-9s-6.5-4-11.5-4H52z" fill="white"/>
+
+  <!-- Red accent sweep -->
+  <path d="M20 78c20-8 45-12 80-4" stroke="#C41E3A" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- Red accent dot -->
+  <circle cx="98" cy="30" r="6" fill="#E84040"/>
+
+  <defs>
+    <radialGradient id="innerGlow" cx="0.3" cy="0.2" r="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2D2926"/>
+      <stop offset="1" stop-color="#1A1A1A"/>
+    </radialGradient>
+  </defs>
+</svg>

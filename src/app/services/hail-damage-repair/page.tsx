@@ -49,7 +49,7 @@ export default function HailDamageRepairPage() {
     name: "Hail Damage Repair",
     description:
       "Professional paintless dent repair for hail damage in the Dallas-Fort Worth area. Insurance claims assistance and $0 out of pocket.",
-    url: "https://boonesanderspdr.com/services/hail-damage-repair",
+    url: "https://boonepdr.com/services/hail-damage-repair",
   });
   const faqSchema = getFAQSchema(faqs);
 
@@ -209,7 +209,7 @@ export default function HailDamageRepairPage() {
             <div>
               <BeforeAfterSlider
                 beforeColor="#78909C"
-                afterColor="#1B3A5C"
+                afterColor="#1A1A1A"
                 height="350px"
                 beforeLabel="Before — Hail Damage"
                 afterLabel="After — PDR Repair"

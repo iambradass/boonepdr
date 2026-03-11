@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #1B3A5C;
-  --navy-dark: #122844;
-  --steel: #2E75B6;
-  --steel-light: #4A9ADB;
-  --accent: #E65100;
-  --accent-hover: #FF6D1F;
-  --text-dark: #1a1a1a;
-  --text-light: #f8fafc;
-  --text-muted: #64748b;
+  --navy: #1A1A1A;
+  --navy-dark: #111010;
+  --steel: #C41E3A;
+  --steel-light: #E84040;
+  --accent: #E84040;
+  --accent-hover: #FF4D4D;
+  --text-dark: #1A1817;
+  --text-light: #FAF8F6;
+  --text-muted: #5A5550;
   --bg-white: #ffffff;
-  --bg-light: #f1f5f9;
-  --bg-dark: #0f172a;
-  --border: #e2e8f0;
+  --bg-light: #F8F5F2;
+  --bg-dark: #0D0B0A;
+  --border: #E8E0D8;
 }
 
 @theme inline {
@@ -42,6 +42,7 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Focus styles for accessibility */
@@ -50,19 +51,89 @@ html {
   outline-offset: 2px;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-light);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--navy);
-  border-radius: 4px;
+/* Custom scrollbar — desktop only (mobile uses native overlay) */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-light);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--navy);
+    border-radius: 4px;
+  }
 }
 
 /* Click-to-call link styling */
 a[href^="tel:"] {
   white-space: nowrap;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient {
+    animation: none;
+  }
+  .hero-float,
+  .hero-float-delayed {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   HERO ANIMATIONS
+   ========================================== */
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--navy-dark) 0%,
+    var(--navy) 30%,
+    #261515 60%,
+    var(--navy-dark) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-float {
+  animation: heroFloat 8s ease-in-out infinite;
+}
+
+.hero-float-delayed {
+  animation: heroFloat 10s ease-in-out 2s infinite;
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+/* ==========================================
+   SELECTION STYLES
+   ========================================== */
+
+::selection {
+  background: var(--steel);
+  color: white;
 }

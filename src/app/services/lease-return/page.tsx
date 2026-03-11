@@ -43,7 +43,7 @@ export default function LeaseReturnPage() {
     name: "Lease Return & Dealer PDR Services",
     description:
       "Lease return dent repair and dealership reconditioning services in the Dallas-Fort Worth area. Save hundreds on lease penalties.",
-    url: "https://boonesanderspdr.com/services/lease-return",
+    url: "https://boonepdr.com/services/lease-return",
   });
   const faqSchema = getFAQSchema(faqs);
 

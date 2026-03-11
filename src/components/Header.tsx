@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { HiMenu, HiX, HiPhone, HiChevronDown } from "react-icons/hi";
 import { BUSINESS, NAV_LINKS } from "@/lib/constants";
+import Logo from "@/components/Logo";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,16 +17,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change + Escape key
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
+      const handleKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setMobileOpen(false);
+      };
+      document.addEventListener("keydown", handleKey);
+      return () => {
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", handleKey);
+      };
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [mobileOpen]);
 
   return (
@@ -36,36 +42,12 @@ export default function Header() {
           : "bg-white/95 backdrop-blur-sm"
       }`}
     >
-      {/* Top bar — visible on desktop */}
-      <div className="hidden md:block bg-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9 text-sm">
-          <span>{BUSINESS.hours.weekdays} | {BUSINESS.hours.saturday}</span>
-          <a
-            href={`tel:${BUSINESS.phoneRaw}`}
-            className="flex items-center gap-1.5 hover:text-accent transition-colors font-medium"
-          >
-            <HiPhone className="w-3.5 h-3.5" />
-            {BUSINESS.phone}
-          </a>
-        </div>
-      </div>
-
       {/* Main nav */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-10 h-10 bg-navy rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">BS</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-navy font-bold text-lg leading-tight">
-                Boone Sanders
-              </span>
-              <span className="text-text-muted text-xs leading-tight tracking-wide uppercase">
-                Paintless Dent Repair
-              </span>
-            </div>
+          <Link href="/" className="shrink-0 group">
+            <Logo size={130} className="group-hover:opacity-90 transition-opacity duration-300" />
           </Link>
 
           {/* Desktop nav links */}
@@ -119,17 +101,17 @@ export default function Header() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
-              className="flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-steel transition-colors"
+              className="flex items-center gap-1.5 text-sm font-bold text-navy hover:text-steel transition-colors duration-300"
             >
               <HiPhone className="w-4 h-4" />
               {BUSINESS.phone}
             </a>
             <Link
               href="/contact"
-              className="bg-accent hover:bg-accent-hover text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors shadow-sm"
+              className="bg-accent hover:bg-accent-hover text-white font-bold px-6 py-2.5 rounded-xl text-sm transition-all duration-300 shadow-sm hover:shadow-[0_4px_16px_rgba(232,64,64,0.3)] hover:-translate-y-0.5 active:translate-y-0"
             >
               Get a Free Quote
             </Link>
@@ -148,6 +130,8 @@ export default function Header() {
               onClick={() => setMobileOpen(!mobileOpen)}
               className="flex items-center justify-center w-10 h-10 text-navy"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
             >
               {mobileOpen ? (
                 <HiX className="w-6 h-6" />
@@ -161,11 +145,14 @@ export default function Header() {
 
       {/* Mobile menu overlay */}
       <div
-        className={`fixed inset-0 top-16 bg-white z-40 lg:hidden transition-transform duration-300 ease-in-out ${
+        id="mobile-menu"
+        className={`fixed top-16 left-0 right-0 z-40 lg:hidden transition-transform duration-300 ease-in-out ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{ backgroundColor: "var(--bg-white)", height: "calc(100dvh - 4rem)" }}
+        aria-hidden={!mobileOpen}
       >
-        <nav className="flex flex-col p-6 gap-1">
+        <nav aria-label="Mobile navigation" className="flex flex-col p-6 gap-1 overflow-y-auto h-full">
           {NAV_LINKS.map((link) => (
             <div key={link.href}>
               <Link

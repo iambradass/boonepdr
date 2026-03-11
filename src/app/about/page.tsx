@@ -3,9 +3,9 @@ import Link from "next/link";
 import { BUSINESS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About Boone Sanders | PDR Expert",
+  title: "About Boone | PDR Expert",
   description:
-    "Meet Boone Sanders — DFW's trusted paintless dent repair expert with 10+ years of experience. Learn about our story, values, and commitment to quality.",
+    "Meet Boone — DFW's trusted paintless dent repair expert with 10+ years of experience. Learn about our story, values, and commitment to quality.",
 };
 
 export default function AboutPage() {
@@ -31,7 +31,7 @@ export default function AboutPage() {
             <div className="bg-bg-light rounded-2xl aspect-[4/5] flex items-center justify-center">
               <div className="text-center p-8">
                 <div className="w-32 h-32 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-navy font-bold text-5xl">BS</span>
+                  <span className="text-navy font-bold text-5xl">B</span>
                 </div>
                 <p className="text-text-muted text-sm">
                   Boone&apos;s professional photo will go here
@@ -42,11 +42,11 @@ export default function AboutPage() {
             {/* Story content */}
             <div>
               <h2 className="text-3xl font-bold text-navy mb-6">
-                Meet Boone Sanders
+                Meet Boone
               </h2>
               <div className="space-y-4 text-text-muted leading-relaxed">
                 <p>
-                  Boone Sanders discovered paintless dent repair the way most
+                  Boone discovered paintless dent repair the way most
                   people discover their calling — by accident. After a Texas
                   hailstorm left his own truck covered in dents, he watched a
                   PDR technician work and was fascinated by the skill and
