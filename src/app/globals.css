@@ -37,6 +37,14 @@ body {
   background: var(--bg-white);
   color: var(--text-dark);
   font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video, canvas {
+  display: block;
+  max-width: 100%;
 }
 
 /* Smooth scrolling */
@@ -45,43 +53,30 @@ html {
   overflow-x: hidden;
 }
 
-/* Focus styles for accessibility */
-*:focus-visible {
+/* Focus styles — scoped to interactive elements only */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--steel);
   outline-offset: 2px;
 }
 
-/* Custom scrollbar — desktop only (mobile uses native overlay) */
+/* Custom scrollbar — desktop only */
 @media (min-width: 1024px) {
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--bg-light);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--navy);
-    border-radius: 4px;
-  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg-light); }
+  ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 4px; }
+  /* Firefox */
+  * { scrollbar-width: thin; scrollbar-color: var(--navy) var(--bg-light); }
 }
 
-/* Click-to-call link styling */
-a[href^="tel:"] {
-  white-space: nowrap;
-}
+/* Click-to-call */
+a[href^="tel:"] { white-space: nowrap; }
 
-/* Respect reduced motion preferences */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .hero-gradient {
-    animation: none;
-  }
-  .hero-float,
-  .hero-float-delayed {
-    animation: none;
-  }
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -101,33 +96,42 @@ a[href^="tel:"] {
   animation: gradientShift 15s ease infinite;
 }
 
-@keyframes gradientShift {
-  0%,
-  100% {
+/* Disable expensive animations on mobile */
+@media (max-width: 767px) {
+  .hero-gradient {
+    animation: none;
     background-position: 0% 50%;
   }
-  50% {
-    background-position: 100% 50%;
+  .hero-float,
+  .hero-float-delayed {
+    animation: none;
   }
 }
 
-.hero-float {
-  animation: heroFloat 8s ease-in-out infinite;
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.hero-float-delayed {
-  animation: heroFloat 10s ease-in-out 2s infinite;
-}
+.hero-float { animation: heroFloat 8s ease-in-out infinite; }
+.hero-float-delayed { animation: heroFloat 10s ease-in-out 2s infinite; }
 
 @keyframes heroFloat {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-30px) scale(1.05);
-  }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.02); }
 }
+
+/* Hero content entrance animations (CSS-only, no JS needed) */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-enter-1 { animation: fadeInUp 0.7s ease-out both; }
+.hero-enter-2 { animation: fadeInUp 0.7s 0.1s ease-out both; }
+.hero-enter-3 { animation: fadeInUp 0.7s 0.2s ease-out both; }
+.hero-enter-4 { animation: fadeInUp 0.7s 0.3s ease-out both; }
+.hero-enter-5 { animation: fadeInUp 0.7s 0.5s ease-out both; }
 
 /* ==========================================
    SELECTION STYLES

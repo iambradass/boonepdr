@@ -23,10 +23,10 @@ export default function Home() {
       <Hero />
 
       {/* What is PDR? */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-16">
               <span className="inline-block text-accent font-semibold text-sm tracking-wider uppercase mb-3">
                 The Smart Repair
               </span>
@@ -79,10 +79,10 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-bg-light">
+      <section className="py-16 md:py-24 bg-bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-16">
               <span className="inline-block text-steel font-semibold text-sm tracking-wider uppercase mb-3">
                 What We Do
               </span>
@@ -126,7 +126,7 @@ export default function Home() {
                 icon={MdOutlineHomeRepairService}
                 title="Dealer & Fleet Services"
                 description="Dealerships and fleet managers trust us for fast, high-quality reconditioning that keeps inventory moving."
-                href="/services/lease-return"
+                href="/services"
               />
             </ScrollReveal>
           </div>
@@ -157,11 +157,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Before & After */}
-      <section className="py-24">
+      {/* How It Works */}
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-16">
+              <span className="inline-block text-accent font-semibold text-sm tracking-wider uppercase mb-3">
+                Simple Process
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-navy mb-4">
+                How It Works
+              </h2>
+              <p className="text-text-muted text-lg max-w-2xl mx-auto">
+                Three steps from damaged to perfect. No body shop, no rental car,
+                no hassle.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connector line — desktop only */}
+            <div className="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gradient-to-r from-transparent via-border to-transparent" aria-hidden="true" />
+
+            {[
+              {
+                step: "01",
+                title: "Send Us Photos",
+                desc: "Text or upload photos of your damage. We'll review and send you a free, honest quote — usually within the hour.",
+                delay: 0,
+              },
+              {
+                step: "02",
+                title: "We Come to You",
+                desc: "We bring our tools to your home, office, or anywhere in DFW. No drop-off, no rental car, no wasted time.",
+                delay: 100,
+              },
+              {
+                step: "03",
+                title: "Drive Away Perfect",
+                desc: "Most repairs are done same-day. Your factory paint stays intact, your warranty is preserved, and your car looks flawless.",
+                delay: 200,
+              },
+            ].map((item) => (
+              <ScrollReveal key={item.step} delay={item.delay}>
+                <div className="text-center relative">
+                  <div className="w-20 h-20 bg-navy rounded-2xl flex items-center justify-center mx-auto mb-5">
+                    <span className="text-accent font-extrabold text-2xl">{item.step}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-navy mb-3">{item.title}</h3>
+                  <p className="text-text-muted leading-relaxed">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Before & After */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="text-center mb-10 md:mb-16">
               <span className="inline-block text-accent font-semibold text-sm tracking-wider uppercase mb-3">
                 Real Results
               </span>
@@ -169,9 +225,8 @@ export default function Home() {
                 See the Difference
               </h2>
               <p className="text-text-muted text-lg max-w-2xl mx-auto">
-                Drag the slider to see real before &amp; after results.
-                These placeholders will be replaced with Boone&apos;s actual repair
-                photos.
+                Drag the slider to reveal the transformation. Real repairs,
+                real results — no filters, no tricks.
               </p>
             </div>
           </ScrollReveal>
@@ -180,28 +235,28 @@ export default function Home() {
             <ScrollReveal delay={0} direction="left">
               <div>
                 <BeforeAfterSlider
-                  beforeColor="#78909C"
-                  afterColor="#1A1A1A"
+                  beforeImage="/images/gallery/1.jpeg"
+                  afterImage="/images/gallery/2.jpeg"
                   beforeLabel="Before"
                   afterLabel="After"
                   height="280px"
                 />
                 <p className="text-center text-sm text-text-muted mt-3 font-medium">
-                  Hail Damage — 2023 Ford F-150
+                  PDR Repair — Real Results
                 </p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={150} direction="right">
               <div>
                 <BeforeAfterSlider
-                  beforeColor="#90A4AE"
-                  afterColor="#C41E3A"
+                  beforeImage="/images/gallery/3.jpeg"
+                  afterImage="/images/gallery/4.jpeg"
                   beforeLabel="Before"
                   afterLabel="After"
                   height="280px"
                 />
                 <p className="text-center text-sm text-text-muted mt-3 font-medium">
-                  Door Ding — 2022 Toyota Camry
+                  PDR Repair — Real Results
                 </p>
               </div>
             </ScrollReveal>
@@ -229,69 +284,45 @@ export default function Home() {
       {/* Testimonials */}
       <TestimonialCarousel />
 
-      {/* Service Area CTA */}
-      <section className="py-24">
+      {/* Final CTA */}
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="bg-gradient-to-br from-navy via-navy-dark to-navy rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
               {/* Decorative orbs */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-steel/10 rounded-full blur-[80px]" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-[60px]" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-steel/10 rounded-full blur-[80px]" aria-hidden="true" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-[60px]" aria-hidden="true" />
 
               <div className="relative">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-                  Serving the Entire DFW Metroplex
+                  Ready to Remove Those Dents?
                 </h2>
-                <p className="text-white/75 text-lg max-w-2xl mx-auto mb-10">
-                  From Fort Worth to Dallas, Arlington to Grapevine — we bring
-                  professional paintless dent repair directly to your door. Mobile
-                  service available throughout the metroplex.
+                <p className="text-white/75 text-lg max-w-2xl mx-auto mb-4">
+                  Get a free, no-obligation estimate in minutes. Upload photos of your
+                  damage and we&apos;ll give you an honest quote — no surprises, no
+                  hidden fees.
+                </p>
+                <p className="text-white/50 text-sm mb-10">
+                  Mobile service throughout Fort Worth, Dallas, Arlington, and the entire DFW metroplex.{" "}
+                  <Link href="/service-area" className="underline underline-offset-2 hover:text-white/70 transition-colors">
+                    Check your area
+                  </Link>
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
-                    href="/service-area"
-                    className="bg-white text-navy font-semibold px-8 py-3.5 rounded-xl hover:bg-bg-light transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-                  >
-                    Check Your Area
-                  </Link>
-                  <Link
                     href="/contact"
-                    className="bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                    className="group bg-accent hover:bg-accent-hover text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,64,64,0.35)] hover:-translate-y-0.5"
                   >
-                    Get a Free Quote
+                    Get Your Free Quote
                   </Link>
+                  <a
+                    href={`tel:${BUSINESS.phoneRaw}`}
+                    className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:-translate-y-0.5 border border-white/20"
+                  >
+                    Call {BUSINESS.phone}
+                  </a>
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-24 bg-bg-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-navy mb-4">
-              Ready to Remove Those Dents?
-            </h2>
-            <p className="text-text-muted text-lg mb-10 max-w-2xl mx-auto">
-              Get a free, no-obligation estimate in minutes. Upload photos of your
-              damage and we&apos;ll give you an honest quote — no surprises, no
-              hidden fees.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="group bg-accent hover:bg-accent-hover text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,64,64,0.3)] hover:-translate-y-0.5"
-              >
-                Get Your Free Quote
-              </Link>
-              <a
-                href={`tel:${BUSINESS.phoneRaw}`}
-                className="text-navy font-semibold text-lg hover:text-steel transition-colors"
-              >
-                or call {BUSINESS.phone}
-              </a>
             </div>
           </ScrollReveal>
         </div>

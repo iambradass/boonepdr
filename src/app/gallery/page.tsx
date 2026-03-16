@@ -6,9 +6,9 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 const galleryItems = [
   { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/1.jpeg", afterImage: "/images/gallery/2.jpeg" },
   { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/3.jpeg", afterImage: "/images/gallery/4.jpeg" },
-  { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/5.png", afterImage: "/images/gallery/6.png" },
-  { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/7.PNG", afterImage: "/images/gallery/8.PNG" },
-  { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/9.jpeg", afterImage: "/images/gallery/10.png" },
+  { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/5.jpg", afterImage: "/images/gallery/6.jpg" },
+  { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/7.jpg", afterImage: "/images/gallery/8.jpg" },
+  { label: "PDR Repair — Before & After", beforeImage: "/images/gallery/9.jpeg", afterImage: "/images/gallery/10.jpg" },
 ];
 
 export default function GalleryPage() {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import Image from "next/image";
 
 interface BeforeAfterSliderProps {
   beforeColor?: string;
@@ -79,7 +80,7 @@ export default function BeforeAfterSlider({
         style={afterImage ? undefined : { backgroundColor: afterColor }}
       >
         {afterImage ? (
-          <img src={afterImage} alt={afterLabel} className="w-full h-full object-cover" />
+          <Image src={afterImage} alt={afterLabel} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
         ) : (
           <div className="text-center">
             <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
@@ -101,7 +102,7 @@ export default function BeforeAfterSlider({
         }}
       >
         {beforeImage ? (
-          <img src={beforeImage} alt={beforeLabel} className="w-full h-full object-cover" />
+          <Image src={beforeImage} alt={beforeLabel} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
         ) : (
           <div className="text-center">
             <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/20 flex items-center justify-center">
