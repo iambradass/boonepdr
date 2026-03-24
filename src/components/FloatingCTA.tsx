@@ -30,7 +30,7 @@ export default function FloatingCTA() {
         </a>
         <Link
           href="/contact"
-          className="flex items-center justify-center flex-1 bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl text-sm transition-all duration-300 active:scale-[0.98]"
+          className="flex items-center justify-center flex-1 bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl text-sm transition-all duration-300 active:scale-[0.98] cta-pulse"
         >
           Free Quote
         </Link>

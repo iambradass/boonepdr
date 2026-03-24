@@ -14,6 +14,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import TrustBadges from "@/components/TrustBadges";
 import InstagramFeed from "@/components/InstagramFeed";
 import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import { BUSINESS } from "@/lib/constants";
 
 export default function Home() {
@@ -21,6 +22,48 @@ export default function Home() {
     <>
       {/* Hero */}
       <Hero />
+
+      {/* Animated Stats Bar */}
+      <section className="stats-bar py-10 md:py-12 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+            }}
+          />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <AnimatedCounter
+              end={BUSINESS.yearsExperience}
+              suffix="+"
+              label="Years Experience"
+              sublabel="in DFW"
+            />
+            <AnimatedCounter
+              end={100}
+              suffix="%"
+              label="Satisfaction Rate"
+              sublabel="on every job"
+            />
+            <AnimatedCounter
+              end={5000}
+              suffix="+"
+              label="Dents Repaired"
+              sublabel="and counting"
+            />
+            <AnimatedCounter
+              end={40}
+              suffix="-70%"
+              label="Less Than Body Shops"
+              sublabel="average savings"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* What is PDR? */}
       <section className="py-16 md:py-24">
@@ -63,9 +106,9 @@ export default function Home() {
               },
             ].map((item) => (
               <ScrollReveal key={item.title} delay={item.delay}>
-                <div className="text-center p-8 rounded-2xl hover:bg-bg-light transition-all duration-300 group">
-                  <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-accent/15 group-hover:scale-110 transition-all duration-300">
-                    <item.icon className="w-8 h-8 text-accent" />
+                <div className="text-center p-8 rounded-2xl hover:bg-bg-light transition-all duration-300 group cursor-default">
+                  <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-accent/20 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
+                    <item.icon className="w-8 h-8 text-accent group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <h3 className="text-xl font-bold text-navy mb-3">
                     {item.title}
@@ -91,7 +134,7 @@ export default function Home() {
               </h2>
               <p className="text-text-muted text-lg max-w-2xl mx-auto">
                 From minor door dings to severe hail damage, we handle it all with
-                precision and care. Every repair comes with a lifetime warranty.
+                precision and care. Your satisfaction is guaranteed on every job.
               </p>
             </div>
           </ScrollReveal>
@@ -158,8 +201,19 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, var(--navy) 1px, transparent 1px)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-10 md:mb-16">
               <span className="inline-block text-accent font-semibold text-sm tracking-wider uppercase mb-3">
@@ -200,9 +254,10 @@ export default function Home() {
               },
             ].map((item) => (
               <ScrollReveal key={item.step} delay={item.delay}>
-                <div className="text-center relative">
-                  <div className="w-20 h-20 bg-navy rounded-2xl flex items-center justify-center mx-auto mb-5">
-                    <span className="text-accent font-extrabold text-2xl">{item.step}</span>
+                <div className="text-center relative group">
+                  <div className="w-20 h-20 bg-navy rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="relative text-accent font-extrabold text-2xl">{item.step}</span>
                   </div>
                   <h3 className="text-xl font-bold text-navy mb-3">{item.title}</h3>
                   <p className="text-text-muted leading-relaxed">{item.desc}</p>
@@ -284,14 +339,17 @@ export default function Home() {
       {/* Testimonials */}
       <TestimonialCarousel />
 
+      {/* Accent divider */}
+      <div className="accent-divider max-w-xs mx-auto rounded-full" />
+
       {/* Final CTA */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="bg-gradient-to-br from-navy via-navy-dark to-navy rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
               {/* Decorative orbs */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-steel/10 rounded-full blur-[80px]" aria-hidden="true" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-[60px]" aria-hidden="true" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-steel/10 rounded-full blur-[80px] hero-float" aria-hidden="true" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-[60px] hero-float-delayed" aria-hidden="true" />
 
               <div className="relative">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
@@ -311,7 +369,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
                     href="/contact"
-                    className="group bg-accent hover:bg-accent-hover text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,64,64,0.35)] hover:-translate-y-0.5"
+                    className="shimmer group bg-accent hover:bg-accent-hover text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,64,64,0.35)] hover:-translate-y-0.5"
                   >
                     Get Your Free Quote
                   </Link>

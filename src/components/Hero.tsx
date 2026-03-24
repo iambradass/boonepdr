@@ -70,7 +70,7 @@ export default function Hero() {
             <div className="hero-enter-4 flex flex-col sm:flex-row gap-4 mb-10">
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,64,64,0.35)] hover:-translate-y-0.5 active:translate-y-0"
+                className="shimmer group inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,64,64,0.35)] hover:-translate-y-0.5 active:translate-y-0"
               >
                 Get a Free Quote
                 <svg
@@ -101,7 +101,7 @@ export default function Hero() {
             {/* Trust indicators */}
             <div className="hero-enter-5 flex flex-wrap gap-x-8 gap-y-3">
               {[
-                { icon: HiShieldCheck, text: "Lifetime Warranty" },
+                { icon: HiShieldCheck, text: "Satisfaction Guaranteed" },
                 { icon: HiClock, text: "Same-Day Service" },
                 { icon: HiShieldCheck, text: "Free Estimates" },
               ].map((item) => (

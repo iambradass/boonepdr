@@ -8,7 +8,7 @@ import { getServiceSchema, getFAQSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Door Ding & Dent Repair Fort Worth",
   description:
-    "Professional door ding and dent repair in Fort Worth, Dallas, and DFW. Paintless dent removal starting at $75. Same-day service. Lifetime warranty.",
+    "Professional door ding and dent repair in Fort Worth, Dallas, and DFW. Paintless dent removal starting at $75. Same-day service. Satisfaction guaranteed.",
 };
 
 const faqs = [
@@ -114,7 +114,7 @@ export default function DoorDingDentRepairPage() {
                   "Factory paint preserved",
                   "No CARFAX record",
                   "Mobile service available",
-                  "Lifetime warranty",
+                  "Satisfaction guaranteed",
                   "No rental car needed",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2">

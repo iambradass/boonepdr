@@ -23,7 +23,7 @@ export default function ServicesPage() {
           </h1>
           <p className="text-white/80 text-lg max-w-2xl mx-auto">
             From minor door dings to severe hail damage, {BUSINESS.name}{" "}
-            handles it all. Every repair comes with a lifetime warranty.
+            handles it all. Your satisfaction is guaranteed on every job.
           </p>
         </div>
       </section>

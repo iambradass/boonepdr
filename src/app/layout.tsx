@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Boone PDR",
   },
   description:
-    "Professional paintless dent repair in the DFW metroplex. Hail damage repair, door ding removal, and insurance claims assistance. Free estimates. Lifetime warranty on all repairs.",
+    "Professional paintless dent repair in the DFW metroplex. Hail damage repair, door ding removal, and insurance claims assistance. Free estimates. Satisfaction guaranteed on every repair.",
   keywords: [
     "paintless dent repair",
     "PDR",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Boone PDR",
     title: "Paintless Dent Repair Fort Worth & Dallas | Boone PDR",
     description:
-      "Professional paintless dent repair in the DFW metroplex. Hail damage, door dings, and dent removal. Free estimates & lifetime warranty.",
+      "Professional paintless dent repair in the DFW metroplex. Hail damage, door dings, and dent removal. Free estimates & satisfaction guaranteed.",
     images: [
       {
         url: "/images/og-image.png",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Paintless Dent Repair Fort Worth & Dallas | Boone PDR",
     description:
-      "Professional paintless dent repair in the DFW metroplex. Free estimates & lifetime warranty.",
+      "Professional paintless dent repair in the DFW metroplex. Free estimates & satisfaction guaranteed.",
     images: ["/images/og-image.png"],
   },
   robots: {

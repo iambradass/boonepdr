@@ -47,9 +47,11 @@ export default function TestimonialCarousel() {
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={i * 100}>
-              <div className="bg-white rounded-2xl border border-border p-6 md:p-8 relative overflow-hidden h-full flex flex-col">
+              <div className="card-glow bg-white rounded-2xl border border-border p-6 md:p-8 relative overflow-hidden h-full flex flex-col hover:-translate-y-1 transition-all duration-300">
                 {/* Accent line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-steel via-accent to-steel" />
+                {/* Subtle corner glow */}
+                <div className="absolute -top-12 -right-12 w-24 h-24 bg-accent/5 rounded-full blur-2xl" aria-hidden="true" />
 
                 {/* Stars */}
                 <div className="flex items-center gap-0.5 mb-3 mt-1">

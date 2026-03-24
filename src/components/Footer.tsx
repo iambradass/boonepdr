@@ -19,7 +19,7 @@ export default function Footer() {
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Professional paintless dent repair serving the entire Dallas-Fort
               Worth metroplex. Hail damage, door dings, and dent removal with a
-              lifetime warranty on all repairs.
+              satisfaction guaranteed on every repair.
             </p>
             <div className="flex items-center gap-2">
               {[...Array(5)].map((_, i) => (

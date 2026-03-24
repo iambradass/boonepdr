@@ -107,7 +107,7 @@ export default function InsurancePage() {
               {
                 step: 5,
                 title: "Expert PDR Repair",
-                desc: "Our skilled technicians remove every hail dent using precision PDR tools. No paint, no filler — your factory finish stays intact. Every repair is backed by a lifetime warranty.",
+                desc: "Our skilled technicians remove every hail dent using precision PDR tools. No paint, no filler — your factory finish stays intact. Your satisfaction is guaranteed on every repair.",
                 tip: "We do a thorough quality check with LED reflection boards to ensure perfection.",
               },
               {

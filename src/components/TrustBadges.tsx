@@ -7,8 +7,8 @@ import { BUSINESS } from "@/lib/constants";
 const badges = [
   {
     icon: HiShieldCheck,
-    label: "Lifetime Warranty",
-    sublabel: "On All Repairs",
+    label: "Satisfaction Guaranteed",
+    sublabel: "On Every Repair",
   },
   {
     icon: HiStar,

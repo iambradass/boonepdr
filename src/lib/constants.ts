@@ -4,7 +4,7 @@ export const BUSINESS = {
   tagline: "DFW's Trusted Paintless Dent Repair Experts",
   phone: "(817) 228-0050",
   phoneRaw: "+18172280050",
-  email: "boone@boonepdr.com",
+  email: "mbs0785@gmail.com",
   domain: "boonepdr.com",
   url: "https://boonepdr.com",
   address: "Fort Worth, TX",

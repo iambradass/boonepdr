@@ -8,7 +8,7 @@ import { getServiceSchema, getFAQSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Hail Damage Repair DFW | Paintless Dent Removal",
   description:
-    "Expert hail damage repair in Fort Worth, Dallas, and the DFW metroplex. Insurance claims assistance, $0 out of pocket, lifetime warranty. Free estimates.",
+    "Expert hail damage repair in Fort Worth, Dallas, and the DFW metroplex. Insurance claims assistance, $0 out of pocket, satisfaction guaranteed. Free estimates.",
 };
 
 const faqs = [

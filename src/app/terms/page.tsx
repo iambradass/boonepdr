@@ -28,8 +28,8 @@ export default function TermsPage() {
           <p className="text-text-muted leading-relaxed mb-6">
             {BUSINESS.name} provides paintless dent repair (PDR) services in
             the Dallas-Fort Worth metroplex. All repair work is performed by
-            trained technicians and comes with a lifetime warranty against
-            defects in workmanship.
+            trained technicians. We stand behind our work and guarantee your
+            satisfaction on every repair.
           </p>
 
           <h2 className="text-2xl font-bold text-navy mb-4">
@@ -46,10 +46,11 @@ export default function TermsPage() {
             Warranty
           </h2>
           <p className="text-text-muted leading-relaxed mb-6">
-            We stand behind our work with a lifetime warranty on all paintless
-            dent repairs. This warranty covers the specific dents repaired and
-            guarantees they will not return. The warranty does not cover new
-            damage, paint damage, or damage caused by subsequent events.
+            We stand behind our work with a satisfaction guarantee on all paintless
+            dent repairs. If you&apos;re not completely satisfied with the quality of our
+            repair, we&apos;ll make it right. This guarantee covers the specific dents
+            repaired and does not cover new damage, paint damage, or damage
+            caused by subsequent events.
           </p>
 
           <h2 className="text-2xl font-bold text-navy mb-4">

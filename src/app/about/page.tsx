@@ -65,7 +65,7 @@ export default function AboutPage() {
                   it&apos;s his approach. He treats every customer&apos;s vehicle
                   like it&apos;s his own. He&apos;s honest about what PDR can
                   and can&apos;t fix, transparent about pricing, and stands
-                  behind every repair with a lifetime warranty.
+                  behind every repair — your satisfaction is guaranteed.
                 </p>
                 <p>
                   When he&apos;s not restoring vehicles, you can find Boone
@@ -93,7 +93,7 @@ export default function AboutPage() {
               },
               {
                 title: "Quality Over Speed",
-                desc: "We never rush a repair. Every dent gets the time and attention it needs to achieve a flawless result. That's why every repair comes with a lifetime warranty.",
+                desc: "We never rush a repair. Every dent gets the time and attention it needs to achieve a flawless result. That's why we guarantee your satisfaction on every job.",
               },
               {
                 title: "Fair, Transparent Pricing",
