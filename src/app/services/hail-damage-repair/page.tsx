@@ -8,19 +8,19 @@ import { getServiceSchema, getFAQSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Hail Damage Repair DFW | Paintless Dent Removal",
   description:
-    "Expert hail damage repair in Fort Worth, Dallas, and the DFW metroplex. Insurance claims assistance, $0 out of pocket, satisfaction guaranteed. Free estimates.",
+    "Expert hail damage repair in Fort Worth, Dallas, and the DFW metroplex. Insurance claims assistance, up to $1,000 deductible coverage, satisfaction guaranteed. Free estimates.",
 };
 
 const faqs = [
   {
     question: "Does insurance cover hail damage PDR?",
     answer:
-      "Yes! Hail damage is covered under the comprehensive portion of your auto insurance policy. Comprehensive claims typically do not raise your rates — unlike collision claims. Most of our customers pay $0 out of pocket for hail damage repair.",
+      "Yes! Hail damage is covered under the comprehensive portion of your auto insurance policy. Comprehensive claims typically do not raise your rates — unlike collision claims. Plus, we offer up to $1,000 in deductible assistance to help reduce your out-of-pocket cost.",
   },
   {
     question: "How long does hail damage repair take?",
     answer:
-      "It depends on the severity. Minor hail with 20-50 dents can often be completed in a single day. Severe hail storms that cause hundreds of dents may take 2-3 days. We'll give you an accurate timeline during your free estimate.",
+      "It depends on the severity. Minor hail with 20-50 dents can often be completed in a single day. Severe hail storms that cause hundreds of dents may take 2-3 days. All hail repairs are performed at our shop to ensure the best possible results. We'll give you an accurate timeline during your free estimate.",
   },
   {
     question: "Will PDR work on my hail damage?",
@@ -48,7 +48,7 @@ export default function HailDamageRepairPage() {
   const serviceSchema = getServiceSchema({
     name: "Hail Damage Repair",
     description:
-      "Professional paintless dent repair for hail damage in the Dallas-Fort Worth area. Insurance claims assistance and $0 out of pocket.",
+      "Professional paintless dent repair for hail damage in the Dallas-Fort Worth area. Insurance claims assistance and up to $1,000 deductible coverage.",
     url: "https://boonepdr.com/services/hail-damage-repair",
   });
   const faqSchema = getFAQSchema(faqs);
@@ -78,7 +78,7 @@ export default function HailDamageRepairPage() {
               Texas hailstorms are brutal — but your vehicle doesn&apos;t have
               to show it. We specialize in removing all hail dents using
               paintless dent repair, and we work directly with your insurance so
-              you pay $0 out of pocket.
+              we offer up to $1,000 in deductible assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
@@ -149,13 +149,13 @@ export default function HailDamageRepairPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-navy mb-6">
-                $0 Out of Pocket — We Handle Your Insurance Claim
+                We Handle Your Insurance Claim
               </h2>
               <p className="text-text-muted leading-relaxed mb-6">
-                Most hail damage repairs are fully covered by your comprehensive
-                auto insurance. That means you pay nothing — or just your
-                deductible. We handle the entire claims process from start to
-                finish, including:
+                Hail damage repairs are covered by your comprehensive auto
+                insurance. We handle the entire claims process from start to
+                finish — and we offer up to $1,000 in deductible assistance
+                to help reduce your out-of-pocket cost. Our services include:
               </p>
               <ul className="space-y-3">
                 {[
@@ -239,8 +239,8 @@ export default function HailDamageRepairPage() {
             Hail Damage? Let&apos;s Fix It.
           </h2>
           <p className="text-white/90 text-lg mb-8">
-            Get a free estimate and let us handle your insurance claim. Most
-            customers pay $0 out of pocket.
+            Get a free estimate and let us handle your insurance claim. We
+            offer up to $1,000 in deductible assistance.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

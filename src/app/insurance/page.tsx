@@ -7,7 +7,7 @@ import { getFAQSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Insurance Claims Help | Hail Damage Claims DFW",
   description:
-    "We handle your hail damage insurance claim from start to finish. $0 out of pocket on most claims. Step-by-step claims assistance in Fort Worth and Dallas.",
+    "We handle your hail damage insurance claim from start to finish. Up to $1,000 deductible assistance. Step-by-step claims assistance in Fort Worth and Dallas.",
 };
 
 const faqs = [
@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "What is a deductible and will I have to pay it?",
     answer:
-      "Your deductible is the amount you pay before insurance covers the rest. For comprehensive claims, deductibles typically range from $250-$1,000. Yes, you are responsible for your deductible — but the insurance company pays everything above that amount. For significant hail damage, the insurance payout far exceeds the deductible.",
+      "Your deductible is the amount you pay before insurance covers the rest. For comprehensive claims, deductibles typically range from $250-$2,000. We offer up to $1,000 in deductible assistance to help offset your cost. The insurance company pays everything above the deductible, and for significant hail damage, the insurance payout far exceeds it.",
   },
   {
     question: "What if the insurance adjuster's estimate seems low?",
@@ -61,8 +61,8 @@ export default function InsurancePage() {
           </h1>
           <p className="text-white/80 text-lg max-w-2xl mx-auto">
             We handle the entire insurance claims process for you — from filing
-            to final payment. Most customers pay $0 out of pocket for hail
-            damage repair.
+            to final payment — and we offer up to $1,000 in deductible
+            assistance to help reduce your out-of-pocket cost.
           </p>
         </div>
       </section>
@@ -113,8 +113,8 @@ export default function InsurancePage() {
               {
                 step: 6,
                 title: "Final Inspection & Payment",
-                desc: "We do a final walkthrough with you to make sure you're 100% satisfied. Insurance pays us directly — you only pay your deductible (if applicable). That's it.",
-                tip: "Most customers pay $0 out of pocket or just their deductible. No surprise fees, ever.",
+                desc: "We do a final walkthrough with you to make sure you're 100% satisfied. Insurance pays us directly — and we offer up to $1,000 toward your deductible.",
+                tip: "We help offset your deductible so you keep more money in your pocket. No surprise fees, ever.",
               },
             ].map((item) => (
               <div
@@ -160,8 +160,8 @@ export default function InsurancePage() {
                 desc: "Texas law guarantees your right to choose your own repair facility. You are never required to use your insurance company's 'preferred' shops.",
               },
               {
-                title: "$0 Out of Pocket",
-                desc: "For most hail claims, insurance covers the full repair minus your deductible. Many of our customers pay nothing out of pocket at all.",
+                title: "Up to $1,000 Deductible Help",
+                desc: "We offer up to $1,000 in deductible assistance on qualifying hail repairs to help reduce your out-of-pocket cost.",
               },
               {
                 title: "We Handle Supplements",

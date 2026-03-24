@@ -62,12 +62,13 @@ export default function ServiceAreaPage() {
           {/* Mobile Service Banner */}
           <div className="bg-accent rounded-2xl p-8 md:p-10 text-center text-white mb-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              Mobile Service — We Come to You
+              Mobile Service &amp; Shop Repairs
             </h2>
             <p className="text-white/90 text-lg max-w-2xl mx-auto">
-              No need to drive across town or sit in a waiting room. Our
-              fully-equipped mobile setup comes to your home, office, or
-              dealership. Professional results, zero hassle.
+              For most door dings and minor dents, we come to your home or
+              office. Hail damage and more complex repairs are performed at our
+              shop to ensure the highest quality results. Either way — professional
+              results, zero hassle.
             </p>
           </div>
 

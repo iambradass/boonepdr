@@ -35,7 +35,7 @@ export default function ServicesPage() {
             <ServiceCard
               icon={BsCloudHail}
               title="Hail Damage Repair"
-              description="Texas hailstorms leave behind hundreds — sometimes thousands — of dents. We restore your vehicle to factory condition and handle your entire insurance claim. Most hail repairs are $0 out of pocket."
+              description="Texas hailstorms leave behind hundreds — sometimes thousands — of dents. We restore your vehicle to factory condition at our shop and handle your entire insurance claim. Up to $1,000 deductible assistance available."
               href="/services/hail-damage-repair"
             />
             <ServiceCard

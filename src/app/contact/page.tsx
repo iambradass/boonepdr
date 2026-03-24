@@ -112,7 +112,7 @@ export default function ContactPage() {
                     "Satisfaction guaranteed on every repair",
                     "Free, no-obligation estimates",
                     "Insurance claims assistance",
-                    "$0 out of pocket on hail claims",
+                    "Up to $1,000 deductible assistance on hail claims",
                     "Same-day service available",
                     "Mobile service — we come to you",
                     `${BUSINESS.yearsExperience}+ years of experience`,

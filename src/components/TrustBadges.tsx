@@ -27,7 +27,7 @@ const badges = [
   },
   {
     icon: HiCurrencyDollar,
-    label: "$0 Out of Pocket",
+    label: "Up to $1K Deductible Help",
     sublabel: "On Hail Claims",
   },
 ];

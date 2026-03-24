@@ -144,7 +144,7 @@ export default function Home() {
               <ServiceCard
                 icon={BsCloudHail}
                 title="Hail Damage Repair"
-                description="Texas hailstorms don't stand a chance. We remove all hail dents and work directly with your insurance — $0 out of pocket."
+                description="Texas hailstorms don't stand a chance. We remove all hail dents at our shop and work directly with your insurance — up to $1,000 deductible assistance."
                 href="/services/hail-damage-repair"
               />
             </ScrollReveal>
@@ -243,7 +243,7 @@ export default function Home() {
               {
                 step: "02",
                 title: "We Come to You",
-                desc: "We bring our tools to your home, office, or anywhere in DFW. No drop-off, no rental car, no wasted time.",
+                desc: "For most repairs, we bring our tools to your home or office. Hail damage and larger jobs are done at our shop for the best results.",
                 delay: 100,
               },
               {

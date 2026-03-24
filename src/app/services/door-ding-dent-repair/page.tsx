@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "Do you offer mobile service?",
     answer:
-      "Yes! We come to your home, office, or wherever is convenient. Our fully-equipped mobile setup means you don't have to take time out of your day to drive to a shop.",
+      "Yes! For most door dings and minor dents, we come to your home, office, or wherever is convenient. Some larger or more complex repairs may need to be done at our shop for the best results — we'll let you know upfront during your estimate.",
   },
 ];
 
