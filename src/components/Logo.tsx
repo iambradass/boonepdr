@@ -5,94 +5,201 @@ interface LogoProps {
 }
 
 export default function Logo({
-  size = 140,
+  size = 160,
   className = "",
   variant = "dark",
 }: LogoProps) {
-  const textColor = variant === "light" ? "#FFFFFF" : "#1A1A1A";
-  const swooshDark = "#8B1A2B";
-  const swooshMid = "#C41E3A";
-  const swooshLight = "#E84040";
+  const isDark = variant === "light";
+  const textColor = isDark ? "#FFFFFF" : "#1A2744";
+  const pdrColor = "#C41E3A";
 
-  const iconW = Math.round(size * 0.28);
-  const iconH = Math.round(iconW * 0.5);
-  const gap = Math.round(size * 0.04);
-  const booneSize = Math.round(size * 0.155);
-  const pdrSize = Math.round(size * 0.085);
-  const pdrGap = Math.round(booneSize * 0.15);
+  // Unique gradient IDs to avoid collisions when multiple logos render
+  const uid = isDark ? "l" : "d";
+
+  // Responsive scaling
+  const scale = size / 160;
+  const iconW = Math.round(120 * scale);
+  const iconH = Math.round(52 * scale);
+  const booneSize = Math.round(26 * scale);
+  const pdrSize = Math.round(13 * scale);
+  const pdrGap = Math.round(3 * scale);
 
   return (
     <span
-      className={`inline-flex items-center select-none ${className}`}
-      style={{ gap: `${gap}px` }}
+      className={`inline-flex flex-col items-center select-none ${className}`}
       aria-label="Boone PDR"
     >
-      {/* Swoosh mark — stylized PDR rod tip curve with 3D depth */}
+      {/* Combined PDR tool icon — hockey stick rod + knockdown hammer */}
       <svg
         width={iconW}
         height={iconH}
-        viewBox="0 0 56 28"
+        viewBox="0 0 120 52"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
-        style={{ filter: "drop-shadow(0 1px 2px rgba(196,30,58,0.3))" }}
+        style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.15))" }}
       >
         <defs>
-          {/* 3D gradient — dark base to bright highlight */}
-          <linearGradient id="swoosh-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor={swooshDark} />
-            <stop offset="40%" stopColor={swooshMid} />
-            <stop offset="100%" stopColor={swooshLight} />
+          {/* Metallic shaft gradient — steel/chrome feel */}
+          <linearGradient id={`shaft-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={isDark ? "#E8E8E8" : "#A0A8B8"} />
+            <stop offset="30%" stopColor={isDark ? "#C8CCD4" : "#7A8494"} />
+            <stop offset="50%" stopColor={isDark ? "#F0F0F0" : "#B8BCC8"} />
+            <stop offset="70%" stopColor={isDark ? "#C8CCD4" : "#7A8494"} />
+            <stop offset="100%" stopColor={isDark ? "#A0A4AC" : "#5C6474"} />
           </linearGradient>
-          {/* Highlight stroke for top edge — gives the 3D lit-edge feel */}
-          <linearGradient id="swoosh-hi" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor={swooshLight} stopOpacity="0" />
-            <stop offset="50%" stopColor="#FF6B6B" stopOpacity="0.8" />
-            <stop offset="100%" stopColor={swooshLight} stopOpacity="0" />
+
+          {/* Red accent gradient for tool tips — 3D depth */}
+          <linearGradient id={`tip-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#E84040" />
+            <stop offset="40%" stopColor="#C41E3A" />
+            <stop offset="100%" stopColor="#8B1A2B" />
+          </linearGradient>
+
+          {/* Grip texture gradient — dark rubber feel */}
+          <linearGradient id={`grip-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#3A3A3A" />
+            <stop offset="30%" stopColor="#1A1A1A" />
+            <stop offset="50%" stopColor="#2E2E2E" />
+            <stop offset="70%" stopColor="#1A1A1A" />
+            <stop offset="100%" stopColor="#3A3A3A" />
+          </linearGradient>
+
+          {/* Highlight for chrome edge */}
+          <linearGradient id={`hi-${uid}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0" />
+            <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.5" />
+            <stop offset="60%" stopColor="#FFFFFF" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+          </linearGradient>
+
+          {/* Knockdown hammer gold accent */}
+          <linearGradient id={`gold-${uid}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#D4A84B" />
+            <stop offset="40%" stopColor="#B8922E" />
+            <stop offset="60%" stopColor="#E0BC5A" />
+            <stop offset="100%" stopColor="#9A7A20" />
           </linearGradient>
         </defs>
 
-        {/* Shadow layer — offset down for depth */}
+        {/* === LEFT: Hockey stick rod curve === */}
+
+        {/* Shadow of the curved tip */}
         <path
-          d="M4 22 C12 22, 20 18, 28 13 C36 8, 44 5, 52 7"
-          stroke={swooshDark}
+          d="M8 42 C8 36, 10 28, 16 22"
+          stroke="#000"
           strokeWidth="5"
           strokeLinecap="round"
           fill="none"
-          opacity="0.25"
+          opacity="0.08"
+          transform="translate(1, 2)"
+        />
+
+        {/* Curved rod tip — the J-hook */}
+        <path
+          d="M8 42 C8 35, 10 27, 16 22"
+          stroke={`url(#shaft-${uid})`}
+          strokeWidth="4"
+          strokeLinecap="round"
+          fill="none"
+        />
+
+        {/* Red tip cap on the hook end */}
+        <circle cx="8" cy="42" r="3.5" fill={`url(#tip-${uid})`} />
+        <circle cx="8" cy="42" r="1.5" fill="#E84040" opacity="0.6" />
+
+        {/* === CENTER: Main shaft === */}
+
+        {/* Shadow */}
+        <line
+          x1="16" y1="22" x2="100" y2="22"
+          stroke="#000"
+          strokeWidth="5"
+          strokeLinecap="round"
+          opacity="0.06"
           transform="translate(0, 2)"
         />
 
-        {/* Main swoosh — thick curved stroke with gradient */}
-        <path
-          d="M4 20 C12 20, 20 16, 28 11 C36 6, 44 3, 52 5"
-          stroke="url(#swoosh-grad)"
-          strokeWidth="4.5"
+        {/* Main shaft — metallic */}
+        <line
+          x1="16" y1="22" x2="100" y2="22"
+          stroke={`url(#shaft-${uid})`}
+          strokeWidth="3.5"
           strokeLinecap="round"
-          fill="none"
         />
 
-        {/* Highlight edge — thin bright line on top for 3D bevel */}
-        <path
-          d="M6 18.5 C14 18.5, 21 15, 28 10.5 C35 6, 43 3.5, 51 5"
-          stroke="url(#swoosh-hi)"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          fill="none"
+        {/* Chrome highlight stripe along shaft */}
+        <line
+          x1="20" y1="20.5" x2="96" y2="20.5"
+          stroke={`url(#hi-${uid})`}
+          strokeWidth="0.8"
         />
 
-        {/* Tip flare — small bright dot at the trailing tip */}
-        <circle cx="52" cy="5" r="1.8" fill={swooshLight} opacity="0.6" />
+        {/* Grip section — dark rubber in the middle */}
+        <rect
+          x="44" y="19" width="28" height="6" rx="2.5"
+          fill={`url(#grip-${uid})`}
+        />
+        {/* Grip texture lines */}
+        {[0, 4, 8, 12, 16, 20, 24].map((offset) => (
+          <line
+            key={offset}
+            x1={46 + offset}
+            y1="19.5"
+            x2={46 + offset}
+            y2="24.5"
+            stroke="#444"
+            strokeWidth="0.5"
+            opacity="0.4"
+          />
+        ))}
+
+        {/* === RIGHT: Knockdown hammer head === */}
+
+        {/* Gold ferrule (connector ring) */}
+        <rect
+          x="97" y="18.5" width="6" height="7" rx="1.5"
+          fill={`url(#gold-${uid})`}
+        />
+        {/* Ferrule detail lines */}
+        <line x1="98.5" y1="19" x2="98.5" y2="25" stroke="#9A7A20" strokeWidth="0.4" opacity="0.5" />
+        <line x1="101.5" y1="19" x2="101.5" y2="25" stroke="#E0BC5A" strokeWidth="0.4" opacity="0.5" />
+
+        {/* Hammer head — flat wide tip */}
+        <rect
+          x="103" y="14" width="5" height="16" rx="1.5"
+          fill={`url(#tip-${uid})`}
+        />
+
+        {/* Hammer face — the flat striking surface */}
+        <rect
+          x="108" y="12" width="4" height="20" rx="1"
+          fill={`url(#tip-${uid})`}
+        />
+
+        {/* Hammer highlight edge */}
+        <rect
+          x="108.5" y="13" width="1" height="18" rx="0.5"
+          fill="#E84040"
+          opacity="0.5"
+        />
+
+        {/* Hammer shadow on right edge */}
+        <rect
+          x="111" y="13" width="1" height="18" rx="0.5"
+          fill="#6B0F1F"
+          opacity="0.4"
+        />
       </svg>
 
-      {/* Wordmark */}
-      <span style={{ lineHeight: 1 }}>
+      {/* Wordmark — centered below the tool */}
+      <span style={{ lineHeight: 1, textAlign: "center", marginTop: `${Math.round(4 * scale)}px` }}>
         <span
           style={{
             display: "block",
             fontSize: `${booneSize}px`,
             fontWeight: 800,
-            letterSpacing: "-0.02em",
+            letterSpacing: "0.08em",
             color: textColor,
             lineHeight: 1,
             fontFamily:
@@ -105,9 +212,9 @@ export default function Logo({
           style={{
             display: "block",
             fontSize: `${pdrSize}px`,
-            fontWeight: 500,
-            letterSpacing: "0.28em",
-            color: swooshMid,
+            fontWeight: 600,
+            letterSpacing: "0.35em",
+            color: pdrColor,
             lineHeight: 1,
             marginTop: `${pdrGap}px`,
             fontFamily:
