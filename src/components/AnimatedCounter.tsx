@@ -22,6 +22,7 @@ export default function AnimatedCounter({
   const ref = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -48,26 +49,41 @@ export default function AnimatedCounter({
     const step = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
+      // Ease out quartic for satisfying deceleration
+      const eased = 1 - Math.pow(1 - progress, 4);
       setCount(Math.round(eased * end));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        setDone(true);
+      }
     };
     requestAnimationFrame(step);
   }, [started, end, duration]);
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="text-4xl md:text-5xl font-extrabold text-white mb-1">
-        <span className="tabular-nums">
-          {prefix}
+    <div
+      ref={ref}
+      className={`stat-cell text-center relative${done ? " stat-done" : ""}`}
+    >
+      <div className="flex items-baseline justify-center gap-0.5">
+        {prefix && (
+          <span className="text-accent text-2xl md:text-3xl font-bold" aria-hidden="true">
+            {prefix}
+          </span>
+        )}
+        <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tabular-nums leading-none">
           {count}
-          {suffix}
         </span>
+        {suffix && (
+          <span className="text-accent text-2xl md:text-3xl font-bold" aria-hidden="true">
+            {suffix}
+          </span>
+        )}
       </div>
-      <div className="text-white/90 font-semibold text-sm">{label}</div>
+      <div className="text-white/90 font-semibold text-sm mt-2">{label}</div>
       {sublabel && (
-        <div className="text-white/50 text-xs mt-0.5">{sublabel}</div>
+        <div className="text-white/40 text-xs mt-0.5">{sublabel}</div>
       )}
     </div>
   );

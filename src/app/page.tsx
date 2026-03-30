@@ -23,20 +23,10 @@ export default function Home() {
       {/* Hero */}
       <Hero />
 
-      {/* Animated Stats Bar */}
-      <section className="stats-bar py-10 md:py-12 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
-              backgroundSize: "24px 24px",
-            }}
-          />
-        </div>
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      {/* Stats Grid */}
+      <section className="relative">
+        <div className="stats-grid-wrapper">
+          <div className="stats-grid max-w-5xl mx-auto">
             <AnimatedCounter
               end={BUSINESS.yearsExperience}
               suffix="+"
@@ -57,7 +47,7 @@ export default function Home() {
             />
             <AnimatedCounter
               end={40}
-              suffix="-70%"
+              suffix="–70%"
               label="Less Than Body Shops"
               sublabel="average savings"
             />
