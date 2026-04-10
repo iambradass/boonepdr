@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <Logo size={140} variant="light" />
+              <Logo size={200} variant="light" />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Professional paintless dent repair serving the entire Dallas-Fort

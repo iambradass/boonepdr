@@ -60,7 +60,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="shrink-0 group">
-            <Logo size={130} className="group-hover:opacity-90 transition-opacity duration-300" />
+            <Logo size={160} className="group-hover:opacity-90 transition-opacity duration-300" />
           </Link>
 
           {/* Desktop nav links */}
