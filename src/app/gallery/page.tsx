@@ -41,9 +41,12 @@ export default function GalleryPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {galleryItems.map((item, i) => (
-              <div key={i} className="group">
+              <div
+                key={i}
+                className="group w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)]"
+              >
                 {item.type === "slider" ? (
                   <BeforeAfterSlider
                     beforeImage={item.beforeImage}
