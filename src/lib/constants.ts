@@ -84,10 +84,16 @@ export const NAV_LINKS: NavLink[] = [
       { label: "Hail Damage Repair", href: "/services/hail-damage-repair" },
       { label: "Door Ding & Dent Repair", href: "/services/door-ding-dent-repair" },
       { label: "Lease Return / Dealer Services", href: "/services/lease-return" },
+      { label: "Insurance Claims", href: "/insurance" },
     ],
   },
-  { label: "Insurance", href: "/insurance" },
-  { label: "Service Area", href: "/service-area" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Contact", href: "/contact" },
+  {
+    label: "Info",
+    href: "/service-area",
+    children: [
+      { label: "Service Area", href: "/service-area" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
 ];
