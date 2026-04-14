@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "PDR Services Fort Worth & Dallas",
   description:
     "Professional paintless dent repair services in DFW. Hail damage repair, door ding removal, lease return dent repair, and dealer/fleet services. Free estimates.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

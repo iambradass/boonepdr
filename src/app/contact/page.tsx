@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Get a Free Quote | Contact Us",
   description:
     "Request a free paintless dent repair estimate. Upload photos of your damage and get a quote within hours. Serving Fort Worth, Dallas, and the entire DFW metroplex.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -116,7 +117,7 @@ export default function ContactPage() {
                     "Same-day service available",
                     "Mobile service — we come to you",
                     `${BUSINESS.yearsExperience}+ years of experience`,
-                    `${BUSINESS.rating}-star rated (${BUSINESS.reviewCount}+ reviews)`,
+                    "Locally owned and operated in DFW",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm">
                       <svg
@@ -138,17 +139,18 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              {/* Map placeholder */}
-              <div className="bg-bg-light rounded-2xl overflow-hidden h-64 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <HiLocationMarker className="w-10 h-10 text-text-muted mx-auto mb-2" />
-                  <p className="text-text-muted text-sm">
-                    Google Map will be embedded here
-                  </p>
-                  <p className="text-text-muted text-xs mt-1">
-                    Serving the entire DFW Metroplex
-                  </p>
-                </div>
+              {/* DFW Service Area Map */}
+              <div className="bg-bg-light rounded-2xl overflow-hidden h-64 relative">
+                <iframe
+                  title="Boone PDR DFW service area"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d429957.5!2d-97.13!3d32.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1712000000000"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>

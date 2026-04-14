@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { HiShieldCheck, HiStar, HiClock, HiBadgeCheck, HiCurrencyDollar } from "react-icons/hi";
+import { HiShieldCheck, HiClock, HiBadgeCheck, HiCurrencyDollar, HiHome } from "react-icons/hi";
 import { BUSINESS } from "@/lib/constants";
 
 const badges = [
@@ -11,9 +11,9 @@ const badges = [
     sublabel: "On Every Repair",
   },
   {
-    icon: HiStar,
-    label: `${BUSINESS.rating}-Star Rated`,
-    sublabel: `${BUSINESS.reviewCount}+ Reviews`,
+    icon: HiHome,
+    label: "Mobile Service",
+    sublabel: "We Come to You",
   },
   {
     icon: HiBadgeCheck,

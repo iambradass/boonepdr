@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Insurance Claims Help | Hail Damage Claims DFW",
   description:
     "We handle your hail damage insurance claim from start to finish. Up to $1,000 deductible assistance. Step-by-step claims assistance in Fort Worth and Dallas.",
+  alternates: { canonical: "/insurance" },
 };
 
 const faqs = [
@@ -64,6 +65,66 @@ export default function InsurancePage() {
             to final payment — and we offer up to $1,000 in deductible
             assistance to help reduce your out-of-pocket cost.
           </p>
+        </div>
+      </section>
+
+      {/* 3-step at-a-glance */}
+      <section className="py-14 md:py-16 bg-bg-light">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-2">
+            Three Simple Steps
+          </h2>
+          <p className="text-text-muted text-center mb-10 max-w-xl mx-auto">
+            Here&apos;s the 30-second version. We do the heavy lifting — you just drive away perfect.
+          </p>
+          <div className="relative grid md:grid-cols-3 gap-6 md:gap-4">
+            {/* Connector line — desktop only */}
+            <div className="hidden md:block absolute top-10 left-[16.67%] right-[16.67%] h-0.5 bg-gradient-to-r from-accent/0 via-accent/40 to-accent/0" aria-hidden="true" />
+
+            {[
+              {
+                step: "01",
+                title: "Call",
+                desc: "Reach out to us or your insurance. We'll guide you through starting the claim.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21l-2.26 1.13a11 11 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+                  </svg>
+                ),
+              },
+              {
+                step: "02",
+                title: "Inspect",
+                desc: "We document every dent and work directly with your adjuster to get full coverage approved.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.04 6.65a7.5 7.5 0 0013.61 10M11 8v3m0 0v3m0-3h3m-3 0H8" />
+                  </svg>
+                ),
+              },
+              {
+                step: "03",
+                title: "Repair",
+                desc: "Expert PDR removes every dent — no paint, no filler. Your factory finish stays intact.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                ),
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative bg-white rounded-2xl p-8 text-center border border-border shadow-sm">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider">
+                  {item.step}
+                </div>
+                <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-accent">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-navy mb-2">{item.title}</h3>
+                <p className="text-text-muted text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

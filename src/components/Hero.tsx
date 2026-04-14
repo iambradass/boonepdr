@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HiPhone, HiShieldCheck, HiStar, HiClock } from "react-icons/hi";
+import { HiPhone, HiShieldCheck, HiClock } from "react-icons/hi";
 import { BUSINESS } from "@/lib/constants";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -33,13 +33,9 @@ export default function Hero() {
           <div>
             {/* Badge */}
             <div className="hero-enter-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8">
-              <div className="flex items-center gap-0.5" aria-hidden="true">
-                {[...Array(5)].map((_, i) => (
-                  <HiStar key={i} className="w-3.5 h-3.5 text-yellow-400" />
-                ))}
-              </div>
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true" />
               <span className="text-white/90 text-sm font-medium">
-                {BUSINESS.rating}-Star Rated &middot; {BUSINESS.reviewCount}+ Reviews
+                Locally Owned · {BUSINESS.yearsExperience}+ Years in DFW
               </span>
             </div>
 

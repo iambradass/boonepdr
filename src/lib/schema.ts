@@ -29,11 +29,6 @@ export function getLocalBusinessSchema() {
     })),
     openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-15:00"],
     priceRange: "$$",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: BUSINESS.rating,
-      reviewCount: BUSINESS.reviewCount,
-    },
     sameAs: [BUSINESS.social.facebook],
   };
 }

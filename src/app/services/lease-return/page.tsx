@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Lease Return & Dealer PDR Services DFW",
   description:
     "Lease return dent repair and dealership PDR services in DFW. Avoid expensive lease-end penalties. Dealer reconditioning and fleet services available.",
+  alternates: { canonical: "/services/lease-return" },
 };
 
 const faqs = [

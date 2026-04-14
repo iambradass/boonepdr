@@ -59,7 +59,7 @@ export default function BeforeAfterSlider({
     <div
       ref={containerRef}
       className="relative select-none cursor-col-resize overflow-hidden rounded-xl"
-      style={{ height }}
+      style={{ height, touchAction: "pan-y" }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

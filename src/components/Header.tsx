@@ -81,14 +81,35 @@ export default function Header() {
                       {link.label}
                     </Link>
                     <button
-                      onClick={() =>
-                        setOpenDropdown(openDropdown === link.href ? null : link.href)
-                      }
-                      onKeyDown={(e) => e.key === "Escape" && setOpenDropdown(null)}
+                      onClick={() => {
+                        const next = openDropdown === link.href ? null : link.href;
+                        setOpenDropdown(next);
+                        if (next) {
+                          requestAnimationFrame(() => {
+                            const first = dropdownRef.current?.querySelector<HTMLAnchorElement>(
+                              `[data-submenu="${link.href}"] [role="menuitem"]`
+                            );
+                            first?.focus();
+                          });
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Escape") setOpenDropdown(null);
+                        if (e.key === "ArrowDown") {
+                          e.preventDefault();
+                          setOpenDropdown(link.href);
+                          requestAnimationFrame(() => {
+                            const first = dropdownRef.current?.querySelector<HTMLAnchorElement>(
+                              `[data-submenu="${link.href}"] [role="menuitem"]`
+                            );
+                            first?.focus();
+                          });
+                        }
+                      }}
                       aria-expanded={openDropdown === link.href}
                       aria-haspopup="menu"
                       aria-label={`${link.label} submenu`}
-                      className="p-1 text-text-dark hover:text-steel transition-colors rounded"
+                      className="p-1 text-text-dark hover:text-steel transition-colors rounded focus:outline-none focus:ring-2 focus:ring-steel/30"
                     >
                       <HiChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
@@ -101,6 +122,7 @@ export default function Header() {
                   {/* Dropdown */}
                   <div
                     role="menu"
+                    data-submenu={link.href}
                     className={`absolute top-full left-0 pt-1 transition-all duration-200 ${
                       openDropdown === link.href
                         ? "opacity-100 translate-y-0 visible"
@@ -108,13 +130,33 @@ export default function Header() {
                     }`}
                   >
                     <div className="bg-white rounded-lg shadow-xl border border-border py-2 min-w-[240px]">
-                      {link.children.map((child) => (
+                      {link.children.map((child, idx) => (
                         <Link
                           key={child.href}
                           href={child.href}
                           role="menuitem"
-                          className="block px-4 py-2.5 text-sm text-text-dark hover:bg-bg-light hover:text-steel transition-colors"
+                          className="block px-4 py-2.5 text-sm text-text-dark hover:bg-bg-light hover:text-steel transition-colors focus:outline-none focus:bg-bg-light focus:text-steel"
                           onClick={() => setOpenDropdown(null)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Escape") {
+                              e.preventDefault();
+                              setOpenDropdown(null);
+                            }
+                            if (e.key === "ArrowDown") {
+                              e.preventDefault();
+                              const items = dropdownRef.current?.querySelectorAll<HTMLAnchorElement>(
+                                `[data-submenu="${link.href}"] [role="menuitem"]`
+                              );
+                              if (items) items[(idx + 1) % items.length]?.focus();
+                            }
+                            if (e.key === "ArrowUp") {
+                              e.preventDefault();
+                              const items = dropdownRef.current?.querySelectorAll<HTMLAnchorElement>(
+                                `[data-submenu="${link.href}"] [role="menuitem"]`
+                              );
+                              if (items) items[(idx - 1 + items.length) % items.length]?.focus();
+                            }
+                          }}
                         >
                           {child.label}
                         </Link>

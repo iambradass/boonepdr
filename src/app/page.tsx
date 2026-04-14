@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   HiOutlineSparkles,
   HiOutlineCurrencyDollar,
   HiOutlineClock,
 } from "react-icons/hi";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 import { BsCloudHail, BsCarFront } from "react-icons/bs";
 import { IoCarSportOutline } from "react-icons/io5";
 import { MdOutlineHomeRepairService } from "react-icons/md";

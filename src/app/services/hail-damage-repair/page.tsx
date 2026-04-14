@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Hail Damage Repair DFW | Paintless Dent Removal",
   description:
     "Expert hail damage repair in Fort Worth, Dallas, and the DFW metroplex. Insurance claims assistance, up to $1,000 deductible coverage, satisfaction guaranteed. Free estimates.",
+  alternates: { canonical: "/services/hail-damage-repair" },
 };
 
 const faqs = [

@@ -3,8 +3,7 @@
 import { useState, useRef } from "react";
 import { HiUpload, HiX, HiCheckCircle } from "react-icons/hi";
 
-const WEBHOOK_URL =
-  "https://n8n.srv1364361.hstgr.cloud/webhook/boone-pdr-quote";
+const QUOTE_ENDPOINT = "/api/quote";
 
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -69,7 +68,7 @@ export default function QuoteForm() {
         photos,
       };
 
-      const res = await fetch(WEBHOOK_URL, {
+      const res = await fetch(QUOTE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

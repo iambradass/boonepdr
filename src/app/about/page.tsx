@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "About Boone | PDR Expert",
   description:
     "Meet Boone — DFW's trusted paintless dent repair expert with 10+ years of experience. Learn about our story, values, and commitment to quality.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -27,15 +28,15 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Photo placeholder */}
-            <div className="bg-bg-light rounded-2xl aspect-[4/5] flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="w-32 h-32 bg-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-navy font-bold text-5xl">B</span>
+            {/* Photo placeholder — awaiting Boone's headshot */}
+            <div className="bg-gradient-to-br from-navy to-navy-dark rounded-2xl aspect-[4/5] flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+              <div className="relative text-center p-8">
+                <div className="w-40 h-40 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-white/20">
+                  <span className="text-white font-bold text-7xl">B</span>
                 </div>
-                <p className="text-text-muted text-sm">
-                  Boone&apos;s professional photo will go here
-                </p>
+                <div className="text-white font-bold text-2xl">Boone</div>
+                <div className="text-white/60 text-sm mt-1">Owner &amp; Lead Technician</div>
               </div>
             </div>
 
@@ -131,12 +132,11 @@ export default function AboutPage() {
       {/* Stats */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             {[
               { stat: `${BUSINESS.yearsExperience}+`, label: "Years Experience" },
               { stat: "5,000+", label: "Vehicles Repaired" },
-              { stat: BUSINESS.rating.toString(), label: "Star Rating" },
-              { stat: `${BUSINESS.reviewCount}+`, label: "5-Star Reviews" },
+              { stat: "100%", label: "Satisfaction Guaranteed" },
             ].map((item) => (
               <div key={item.label}>
                 <div className="text-4xl font-bold text-accent mb-1">
@@ -146,37 +146,6 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-navy mb-4">
-            Training &amp; Certifications
-          </h2>
-          <p className="text-text-muted text-lg mb-8">
-            Boone has trained under some of the best PDR technicians in the
-            country and continues to refine his skills.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "PDR Certified Technician",
-              "Advanced Hail Damage Specialist",
-              "Insurance Claims Certified",
-              "LED Glue Pull Certified",
-            ].map((cert) => (
-              <span
-                key={cert}
-                className="bg-white border border-border rounded-lg px-5 py-3 text-sm font-medium text-navy"
-              >
-                {cert}
-              </span>
-            ))}
-          </div>
-          <p className="text-xs text-text-muted mt-6">
-            * Specific certifications to be confirmed with Boone and updated
-          </p>
         </div>
       </section>
 

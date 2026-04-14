@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Service Area | DFW Metroplex Coverage",
   description:
     "Paintless dent repair serving Fort Worth, Dallas, Arlington, Mansfield, and 35+ cities across the DFW metroplex. Mobile service — we come to you.",
+  alternates: { canonical: "/service-area" },
 };
 
 export default function ServiceAreaPage() {
@@ -25,38 +26,20 @@ export default function ServiceAreaPage() {
         </div>
       </section>
 
-      {/* Map placeholder */}
+      {/* DFW Coverage Map */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-bg-light rounded-2xl overflow-hidden h-96 flex items-center justify-center mb-12">
-            <div className="text-center p-8">
-              <svg
-                className="w-16 h-16 text-text-muted mx-auto mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <p className="text-text-muted text-lg font-medium mb-2">
-                Interactive Google Map
-              </p>
-              <p className="text-text-muted text-sm">
-                An embedded Google Map showing our DFW coverage area will be
-                placed here
-              </p>
-            </div>
+          <div className="bg-bg-light rounded-2xl overflow-hidden h-96 mb-12 shadow-sm border border-border">
+            <iframe
+              title="Boone PDR DFW Metroplex coverage area"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d859915.2!2d-97.13!3d32.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1712000000000"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
 
           {/* Mobile Service Banner */}
@@ -76,17 +59,19 @@ export default function ServiceAreaPage() {
           <h2 className="text-3xl font-bold text-navy mb-8 text-center">
             Cities We Serve
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          <ul className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4 max-w-5xl mx-auto">
             {SERVICE_CITIES.map((city) => (
-              <div
+              <li
                 key={city}
-                className="bg-white border border-border rounded-lg px-4 py-3 text-center hover:border-steel/30 hover:shadow-sm transition-all"
+                className="break-inside-avoid mb-2 flex items-center gap-2 text-navy"
               >
-                <span className="text-sm font-medium text-navy">{city}</span>
-                <span className="block text-xs text-text-muted">TX</span>
-              </div>
+                <svg className="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-sm font-medium">{city}, TX</span>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <p className="text-text-muted text-center mt-8">
             Don&apos;t see your city listed? We likely still serve your area.{" "}

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://boonesanderspdr.com/sitemap.xml
+Sitemap: https://boonepdr.com/sitemap.xml

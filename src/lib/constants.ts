@@ -21,8 +21,6 @@ export const BUSINESS = {
     yelp: "#",
   },
   yearsExperience: 10,
-  reviewCount: 150,
-  rating: 4.9,
 } as const;
 
 // Cities served in DFW

@@ -4,22 +4,22 @@ import ScrollReveal from "@/components/ScrollReveal";
 const testimonials = [
   {
     name: "Sarah M.",
-    vehicle: "2023 Toyota Camry",
-    text: "After the hailstorm hit Fort Worth, I thought my car was totaled. Boone had it looking brand new in less than a day. You literally can't tell there was ever any damage. Highly recommend!",
+    vehicle: "Toyota Camry",
+    text: "I got caught in that nasty hail storm last spring and honestly thought I was going to be fighting with my insurance for weeks. Boone walked me through the whole claim, came to do the inspection himself, and the car looked better than before when I got it back. He even covered most of my deductible. Cannot say enough good things.",
     rating: 5,
     service: "Hail Damage Repair",
   },
   {
     name: "Mike T.",
-    vehicle: "2022 Ford F-150",
-    text: "Got a nasty door ding at the Costco parking lot. Boone came out to my house and had it fixed in under an hour. The price was way less than what the body shop quoted me. Amazing work.",
+    vehicle: "Ford F-150",
+    text: "Somebody clocked my truck with a cart at the grocery store and left a dent the size of a softball on the back door. Texted Boone a picture that night, he quoted me the next morning, and was at my driveway by Thursday. Less than an hour and the door looks like nothing ever happened. Way cheaper than the body shop quote I had.",
     rating: 5,
     service: "Door Ding Repair",
   },
   {
     name: "Jennifer K.",
-    vehicle: "2021 BMW X3",
-    text: "I was dreading my lease return with all the parking lot dings I'd collected. Boone fixed every single one and saved me over $1,200 in lease-end penalties. Worth every penny.",
+    vehicle: "BMW X3",
+    text: "My lease was up in three weeks and I had like six or seven dings on the doors and bumper I'd been ignoring. A friend told me about Boone and I'm so glad she did. He knocked them all out in one afternoon at my office. Dealership found zero issues at turn-in. Paid him a few hundred instead of the $1,800 I was bracing for.",
     rating: 5,
     service: "Lease Return Repair",
   },

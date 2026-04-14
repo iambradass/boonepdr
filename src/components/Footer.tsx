@@ -18,23 +18,16 @@ export default function Footer() {
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Professional paintless dent repair serving the entire Dallas-Fort
-              Worth metroplex. Hail damage, door dings, and dent removal with a
+              Worth metroplex. Hail damage, door dings, and dent removal with
               satisfaction guaranteed on every repair.
             </p>
-            <div className="flex items-center gap-2">
-              {[...Array(5)].map((_, i) => (
-                <svg
-                  key={i}
-                  className="w-5 h-5 text-yellow-400 fill-current"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                </svg>
-              ))}
-              <span className="text-sm text-white/70 ml-1">
-                {BUSINESS.rating} ({BUSINESS.reviewCount}+ reviews)
-              </span>
-            </div>
+            <a
+              href={`tel:${BUSINESS.phoneRaw}`}
+              className="inline-flex items-center gap-2 text-white font-bold text-lg hover:text-accent transition-colors"
+            >
+              <HiPhone className="w-5 h-5 text-accent" />
+              {BUSINESS.phone}
+            </a>
           </div>
 
           {/* Quick Links */}

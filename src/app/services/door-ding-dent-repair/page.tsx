@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Door Ding & Dent Repair Fort Worth",
   description:
     "Professional door ding and dent repair in Fort Worth, Dallas, and DFW. Paintless dent removal starting at $75. Same-day service. Satisfaction guaranteed.",
+  alternates: { canonical: "/services/door-ding-dent-repair" },
 };
 
 const faqs = [
@@ -152,6 +153,38 @@ export default function DoorDingDentRepairPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+
+          {/* Conversion CTA — directly under comparison */}
+          <div className="max-w-4xl mx-auto mt-10">
+            <div className="bg-gradient-to-br from-accent to-accent-hover rounded-2xl p-8 md:p-10 text-center text-white shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl" aria-hidden="true" />
+              <div className="relative">
+                <div className="inline-block bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs font-bold tracking-wider uppercase mb-4">
+                  Dings start at just $75
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                  Text us a photo — get a quote back fast
+                </h3>
+                <p className="text-white/90 mb-6 max-w-xl mx-auto">
+                  Most door dings are quoted within the hour. Same-day mobile service across DFW.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center bg-white text-accent font-bold px-8 py-3.5 rounded-xl text-base hover:bg-bg-light transition-all hover:shadow-lg"
+                  >
+                    Get a Free Quote
+                  </Link>
+                  <a
+                    href={`tel:${BUSINESS.phoneRaw}`}
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold px-8 py-3.5 rounded-xl text-base transition-all"
+                  >
+                    Call {BUSINESS.phone}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
